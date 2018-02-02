@@ -56,14 +56,10 @@ listen=1
 masternodeaddr=VPS_IP_AADRESS:7118
 masternodeprivkey=PRIVATE_KEY
 ```
-Replace:
-externalip=VPS_IP_ADDRESS
-masternodeprivkey=PRIVATE_KEY
-With your info!
 
 CTRL X to save it. Y for yes, then ENTER.
 
-now everything is done last command
+Now everything is done last command
 ```
 ./Deviant -daemon
 ```
