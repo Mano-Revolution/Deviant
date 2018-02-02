@@ -37,7 +37,22 @@ chmod 777 Deviantd
 ```
 ./Deviantd
 ```
-(previous command will show message that you need to fill up Deviant.conf - its ok)
+you can see error message
+
+>Error: To use Deviantd, you must set a rpcpassword in the configuration file:
+>/root/.Deviant/Deviant.conf
+>It is recommended you use the following random password:
+>rpcuser=Deviantrpc
+>rpcpassword=4AxX1hHnCGVrf3K3qbJLXtUpTn9bFaXXKo4vWms4Mqzn
+>(you do not need to remember this password)
+>The username and password MUST NOT be the same.
+>If the file does not exist, create it with owner-readable-only file permissions.
+>It is also recommended to set alertnotify so you are notified of problems;
+>for example: alertnotify=echo %s | mail -s "Deviant Alert" admin@foo.com
+
+its -ok
+Go on
+
 ```
 nano ~/.Deviant/Deviant.conf
 ```
@@ -59,11 +74,11 @@ masternodeprivkey=PRIVATE_KEY
 
 CTRL X to save it. Y for yes, then ENTER.
 
-Now everything is done last command
+last command
 ```
 ./Deviant -daemon
 ```
-
+Done
 
 ## Cold Wallet Setup Part 2 
 
