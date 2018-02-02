@@ -9,7 +9,7 @@
 1. Open your wallet on your desktop.
 2. Go to revciev tap and create new address
 3. Make sure you have a transaction of exactly 5000 DEV in your desktop cold wallet.
-(You can collect coins to an address and send 5000 DEV to another address in you same wallet)
+    * You can collect coins to an address and send 5000 DEV to another address in your same wallet
 4. Go to the "Tools" -> "Debug console"
 5. Run the following command: `masternode genkey`
 6. You should see a long key that looks like:
