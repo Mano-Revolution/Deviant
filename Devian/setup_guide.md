@@ -15,9 +15,7 @@
 6. You should see a long key that looks like:
 ```
 3HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg
-```
-   
-   ![Alt text](https://github.com/digitalmine/Guide/blob/master/poliswalletsettings.png "Wallet Settings")
+```  
 
 7. This is your `private key`, keep it safe, do not share with anyone.
 
@@ -31,100 +29,73 @@
 cd /home
 ```
 ```
-wget 
+wget https://github.com/Mano-Revolution/Setup_guide/blob/master/Devian/Deviantd
 ```
 ```
-nano .poliscore/polis.conf
+chmod 777 ./Deviantd
+```
+```
+./Deviantd
+```
+(previous command will show message that you need to fill up Deviant.conf - its ok)
+```
+nano ~/.Deviant/Deviant.conf
+```
+
+copy and paste with your info!
+
+```
+daemon=1
+rpcuser=randuser1234
+rpcpassword=passwardofuesr
+rpcallowip=127.0.0.1
+port=7118
+masternode=1
+server=1
+listen=1
+masternodeaddr=VPS_IP_AADRESS:7118
+masternodeprivkey=PRIVATE_KEY
 ```
 Replace:
 externalip=VPS_IP_ADDRESS
-masternodeprivkey=WALLET_GENKEY
+masternodeprivkey=PRIVATE_KEY
 With your info!
-```
-rpcuser=randuser43897ty8943
-rpcpassword=passhf95uiygr5308h08r3h0249fbgh7389h973
-rpcallowip=127.0.0.1
-listen=1
-server=1
-daemon=0
-logtimestamps=1
-maxconnections=256
-externalip=VPS_IP_ADDRESS
-masternodeprivkey=WALLET_GENKEY
-masternode=1
-connect=35.227.49.86:24126
-connect=192.243.103.182:24126
-connect=185.153.231.146:24126
-connect=91.223.147.100:24126
-connect=96.43.143.93:24126
-connect=104.236.147.210:24126
-connect=159.89.137.114:24126
-connect=159.89.139.41:24126
-connect=174.138.70.155:24126
-connect=174.138.70.16:24126
-connect=45.55.247.25:24126
-```
-CTRL X to save it. Y for yes, then ENTER.
-```
-polisd &
-```
-```
-apt-get -y install virtualenv python-pip
-```
-```
-git clone https://github.com/polispay/sentinel /sentinel
-```
-```
-cd /sentinel
-```
-```
-virtualenv venv
-```
-```
-. venv/bin/activate
-```
-```
-pip install -r requirements.txt
-```
-```
-crontab -e
-```
-Hit 2. This will brin up an editor. Paste the following in it at the bottom.
-```
-* * * * * cd /sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1
-```
+
 CTRL X to save it. Y for yes, then ENTER.
 
-3.Use `watch polis-cli getinfo` to check and wait til it's synced 
-  (look for blocks number and compare with block explorer http://block.polispay.org/ )
+now everything is done last command
+```
+./Deviant -daemon
+```
 
 
 ## Cold Wallet Setup Part 2 
 
-1. On your local machine open your `masternode.conf` file.
-   Depending on your operating system you will find it in:
-   * Windows: `%APPDATA%\polisCore\`
-   * Mac OS: `~/Library/Application Support/polisCore/`
-   * Unix/Linux: `~/.poliscore/`
-   
-   Leave the file open
+1. Go to your window wallet   
 2. Go to "Tools" -> "Debug console"
 3. Run the following command: `masternode outputs`
-4. You should see output like the following if you have a transaction with exactly 1000 POLIS:
+4. You should see output like the following if you have a transaction with exactly 5000 DEV:
 ```
 {
     "12345678xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": "0"
 }
 ```
 5. The value on the left is your `txid` and the right is the `vout`
-6. Add a line to the bottom of the already opened `masternode.conf` file using the IP of your
-VPS (with port 24126), `private key`, `txid` and `vout`:
+6. Go to masternode tap -> My masternode
+7. Click Create
+8. Fill the information
 ```
-mn1 1.2.3.4:24126 3xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 12345678xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 0 
-```
-7. Save the file, exit your wallet and reopen your wallet.
-8. Go to the "Masternodes" tab
-9. Click "Start All"
-10. You will see "WATCHDOG_EXPIRED". Just wait few minutes
+allias: any name
+address: VPS_IP:7118
+privkey: mnprivatekey
+txhash: txid
+output index: vout (0 or 1)
 
-Cheers !
+Click update
+Click start
+
+Done
+```
+Check your ip is listed on http://explorer.deviantcoin.io:3001/masternode 
+
+
