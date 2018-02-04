@@ -61,8 +61,8 @@ copy and paste with your info!
 
 ```
 daemon=1
-rpcuser=randuser1234
-rpcpassword=passwardofuesr
+rpcuser=anythingyouwant
+rpcpassword=anythingyouwant
 rpcallowip=127.0.0.1
 port=7118
 masternode=1
