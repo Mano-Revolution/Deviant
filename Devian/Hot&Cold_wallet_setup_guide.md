@@ -29,7 +29,7 @@
 cd /home
 ```
 ```
-wget https://github.com/Mano-Revolution/Setup_guide/raw/master/Devian/Deviantd
+wget https://github.com/Deviantcoin/Wallet/raw/master/Deviantcoin\ \(Linux\)/Deviantd
 ```
 ```
 chmod 777 Deviantd
