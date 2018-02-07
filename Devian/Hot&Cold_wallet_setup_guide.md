@@ -76,7 +76,7 @@ CTRL X to save it. Y for yes, then ENTER.
 
 last command
 ```
-./Deviant -daemon
+./Deviantd -daemon
 ```
 Done
 
