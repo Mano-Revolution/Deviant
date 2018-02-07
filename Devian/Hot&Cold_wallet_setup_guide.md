@@ -7,7 +7,7 @@
 ## Cold Wallet Setup Part 1
 
 1. Open your wallet on your desktop.
-2. Go to revciev tap and create new address
+2. Go to recieve tap and create new address
 3. Make sure you have a transaction of exactly 5000 DEV in your desktop cold wallet.
     * You can collect coins to an address and send 5000 DEV to another address in your same wallet
 4. Go to the "Tools" -> "Debug console"
@@ -32,7 +32,7 @@ cd /home
 wget https://github.com/Deviantcoin/Wallet/raw/master/Deviantcoin\ \(Linux\)/Deviantd
 ```
 ```
-chmod 777 Deviantd
+chmod 750 Deviantd
 ```
 ```
 ./Deviantd
@@ -98,7 +98,7 @@ Done
 ```
 allias: any name
 address: VPS_IP:7118
-privkey: mnprivatekey
+privekey: mnprivatekey
 txhash: txid
 output index: vout (0 or 1)
 
