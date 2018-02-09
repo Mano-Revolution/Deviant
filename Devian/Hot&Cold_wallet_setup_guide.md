@@ -1,7 +1,7 @@
 ## Preperation
 
 1. Get a VPS from a provider like DigitalOcean, Vultr, Linode, etc. 
-   - Recommended VPS size at least 1gb RAM    
+   - Recommended VPS size at least 1gb RAM, unbuntu 16.04    
 
 
 ## Cold Wallet Setup Part 1
