@@ -50,7 +50,7 @@
   sudo swapon /var/swap.img
   sudo free
   sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
-  cd
+
 ```
 ```
   sudo apt-get install -y ufw
