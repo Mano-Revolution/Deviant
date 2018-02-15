@@ -1,4 +1,4 @@
-window wallet setup part 1
+#  window wallet setup part 1
 
 1. Make new address at recieve tap
 2. Open your wallet on your desktop.
@@ -15,8 +15,9 @@ Check "Enable coin control features"
 6. This is your private key, you will need to enter the same key on your VPS’ 
 Vantaur.conf file later
 
-linux vps setup
-1. Log into your VPS
+# linux vps setup
+
+1. Log into your VPS (ubuntu 16.04)
 2. Copy/paste these commands into the VPS and hit enter: 
 3. sudo apt-get -y update
 4. sudo apt-get -y upgrade
@@ -29,7 +30,9 @@ libgmp3-dev
 9. sudo apt-get install libzmq3-dev libssl-dev libevent-dev libminiupnpc libgmp-dev
 10. sudo apt-get -y install libdb4.8-dev
 11. sudo apt-get -y install libdb4.8++-dev
-12.cd /var
+12.
+```
+ cd /var
   sudo touch swap.img
   sudo chmod 600 swap.img
   sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=2000
@@ -37,8 +40,10 @@ libgmp3-dev
   sudo swapon /var/swap.img
   sudo free
   sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
+
+```
 13. git clone https://github.com/MotileCoin/MotileCoin
-14. cd molile
+14. cd motile
 15. cd src
 16. make –f makefile.unix (This will take a while 10-30mins)
 17. strip motiled
@@ -47,6 +52,7 @@ libgmp3-dev
 20. nano ~/.Moltile/Motile.conf (CASE SENSTIVE make sure M is CAPS)
 
 Add	this	to	your	Vantaur.conf
+```
 rpcuser=PUT	ANYTHING
 rpcpassword=PUT	ANY	UNIQUE	PW
 rpcport=7117
@@ -57,16 +63,30 @@ port=7218
 masternodeaddr=YOUR VPS	IPADDRESS:PORT		for	example:		192.18.22.91:7218
 masternode=1
 masternodeprivkey=YOUR	PRIVKEY	that	you	generated	from	your	Windows	(Cold	Wallet)
-
-window wallet setup part 2
+```
+# window wallet setup part 2
 
 1.Now	let’s	send yourself	EXACTLY	5000 MIE	to	your address
 2.go	to	HELP,	DEBUG	WINDOW,	CONSOLE
 3.Type:	masternode	outputs
-4."txhash : output index" will show up if you sens exact 5000 coin
-5.copy	the txid	but	remember	the	last	digit(vout)	if	it’s	a	1	or	0
-6.Go	to	the	masternode	tab	– MY	MASTERNODES	and	click	on	Create.
+4."txhash : output index" will show up if you sens exact 5000 coin like this
+```
+{
+    "12345678xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": "0"
+}
+```
+
+5.Go	to	the	masternode	tab	– MY	MASTERNODES	and	click	on	Create.
 7.fill it. (alias~ output index)and click ok
+```
+allias: any name
+address: VPS_IP:7218
+privekey: mnprivatekey
+txhash: txhash
+output index: outputindex (0 or 1)
+
+ok
+```
 8. click update
 9. click start
 
