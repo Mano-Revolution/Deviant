@@ -3,8 +3,8 @@
 1. Make new address at recieve tap
 2. Open your wallet on your desktop.
 
-Click Settings -> Options -> Wallet
-Check "Enable coin control features"
+  *  Click Settings -> Options -> Wallet
+  *  Check "Enable coin control features"
 
 3. Go to the "Tools" -> "Debug console"
 4. Run the following command: masternode genkey
