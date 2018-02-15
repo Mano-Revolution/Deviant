@@ -64,6 +64,12 @@ masternodeaddr=YOUR VPS	IPADDRESS:PORT		for	example:		192.18.22.91:7218
 masternode=1
 masternodeprivkey=YOUR	PRIVKEY	that	you	generated	from	your	Windows	(Cold	Wallet)
 ```
+Press	Ctrl-X	>	Press	Y	>	Press	[ENTER]			- to	save	your	Vantaur.Conf	file.
+Stop	your motile	daemon	by	entering:
+1. motiled	stop
+2. Wait 30sec and input : motiled (you can see "starting")
+done
+
 # Window wallet setup part 2
 
 1.Now	let’s	send yourself	EXACTLY	5000 MIE	to	your address
