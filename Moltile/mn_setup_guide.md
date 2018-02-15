@@ -1,4 +1,4 @@
-#  window wallet setup part 1
+#  Window wallet setup part 1
 
 1. Make new address at recieve tap
 2. Open your wallet on your desktop.
@@ -15,7 +15,7 @@ Check "Enable coin control features"
 6. This is your private key, you will need to enter the same key on your VPS’ 
 Vantaur.conf file later
 
-# linux vps setup
+# Linux vps setup
 
 1. Log into your VPS (ubuntu 16.04)
 2. Copy/paste these commands into the VPS and hit enter: 
@@ -64,7 +64,7 @@ masternodeaddr=YOUR VPS	IPADDRESS:PORT		for	example:		192.18.22.91:7218
 masternode=1
 masternodeprivkey=YOUR	PRIVKEY	that	you	generated	from	your	Windows	(Cold	Wallet)
 ```
-# window wallet setup part 2
+# Window wallet setup part 2
 
 1.Now	let’s	send yourself	EXACTLY	5000 MIE	to	your address
 2.go	to	HELP,	DEBUG	WINDOW,	CONSOLE
