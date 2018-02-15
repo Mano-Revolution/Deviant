@@ -1,13 +1,17 @@
 window wallet setup part 1
 
-1.Make new address at recieve tap
-2.Open your wallet on your desktop.
+1. Make new address at recieve tap
+2. Open your wallet on your desktop.
+
 Click Settings -> Options -> Wallet
 Check "Enable coin control features"
+
 3. Go to the "Tools" -> "Debug console"
 4. Run the following command: masternode genkey
 5. You should see a long key that looks like:
+'''
 123fjsadfkJKLF4sBGLALQZE1Yc1K64xiqgX37t9428HJF
+'''
 6. This is your private key, you will need to enter the same key on your VPS’ 
 Vantaur.conf file later
 
