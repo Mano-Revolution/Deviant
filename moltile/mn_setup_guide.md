@@ -58,5 +58,12 @@ window wallet setup part 2
 
 1.Now	let’s	send yourself	EXACTLY	5000 MIE	to	your address
 2.go	to	HELP,	DEBUG	WINDOW,	CONSOLE
-3.masternode outputs
+3.Type:	masternode	outputs
+4."txhash : output index" will show up if you sens exact 5000 coin
+5.copy	the txid	but	remember	the	last	digit(vout)	if	it’s	a	1	or	0
+6.Go	to	the	masternode	tab	– MY	MASTERNODES	and	click	on	Create.
+7.fill it. (alias~ output index)and click ok
+8. click update
+9. click start
+
 
