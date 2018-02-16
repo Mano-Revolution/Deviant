@@ -43,7 +43,7 @@ libgmp3-dev
 
 ```
 13. git clone https://github.com/MotileCoin/MotileCoin
-14. cd motile
+14. cd motilecoin
 15. cd src
 16. make –f makefile.unix (This will take a while 10-30mins)
 17. strip motiled
