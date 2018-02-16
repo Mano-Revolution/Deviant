@@ -49,7 +49,7 @@ libgmp3-dev
 17. strip motiled
 18. sudo cp motiled /usr/local/bin
 19. motiled
-20. nano ~/.Moltile/Motile.conf (CASE SENSTIVE make sure M is CAPS)
+20. nano ~/.Motile/Motile.conf (CASE SENSTIVE make sure M is CAPS)
 
 Add	this	to	your	Vantaur.conf
 ```
