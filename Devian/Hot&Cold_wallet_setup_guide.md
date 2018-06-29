@@ -65,7 +65,7 @@
 cd /home
 ```
 ```
-wget https://github.com/Deviantcoin/Wallet/raw/master/Deviantcoin\ \(Linux\)/Deviantd
+wget https://github.com/Deviantcoin/Wallet/raw/master/dev-3.0.0.1-linux-x86_64.tar.gz
 ```
 ```
 chmod 750 Deviantd
