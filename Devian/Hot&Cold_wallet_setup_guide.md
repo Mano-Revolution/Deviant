@@ -68,10 +68,17 @@ cd /home
 wget https://github.com/Deviantcoin/Wallet/raw/master/dev-3.0.0.1-linux-x86_64.tar.gz
 ```
 ```
-chmod 750 Deviantd
+tar -xvzf dev-3.0.0.1-linux-x86_64.tar.gz
 ```
 ```
-./Deviantd
+cd linux-static-libs
+chmod 750 deviantd
+chmod 750 deviant-cli
+cp deviantd /usr/bin
+cp deviant-cli /usr/bin
+```
+```
+deviantd
 ```
 you can see error message
 
