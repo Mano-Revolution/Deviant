@@ -59,7 +59,7 @@
   sudo ufw logging on
   sudo ufw enable
   sudo ufw status
-  sudo ufw allow 7118/tcp
+  sudo ufw allow 22618/tcp
 ```
 ```
 cd /home
