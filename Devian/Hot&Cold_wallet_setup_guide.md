@@ -65,7 +65,7 @@
 cd /home
 ```
 ```
-wget https://github.com/Deviantcoin/Wallet/blob/master/dev-3.0.0.1-linux-ubuntu18.04.zip
+wget https://github.com/Deviantcoin/Wallet/blob/master/dev-3.0.0.1-linux-x86_64.tar.zip
 ```
 ```
 tar -xvzf dev-3.0.0.1-linux-x86_64.tar.gz
