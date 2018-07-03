@@ -305,8 +305,7 @@ function setup_node() {
   create_key
   update_config
   enable_firewall
-  important_information
-  configure_systemd
+  important_information  
 }
 
 
