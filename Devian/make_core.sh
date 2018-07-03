@@ -25,7 +25,7 @@ function create_config() {
   mkdir $CONFIGFOLDER$IP_SELECT >/dev/null 2>&1
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
-  cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
+  cat << EOF > $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$RPC_PORT
@@ -141,8 +141,8 @@ function important_information() {
  echo -e "${CYAN}Ensure Node is fully SYNCED with BLOCKCHAIN.${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${GREEN}Usage Commands.${NC}"
- echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER masternode status${NC}"
- echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER getinfo${NC}"
+ echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT masternode status${NC}"
+ echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT getinfo${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${RED}Donations always excepted gratefully.${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
