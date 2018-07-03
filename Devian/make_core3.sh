@@ -1,12 +1,13 @@
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='deviant.conf'
-CONFIGFOLDER='/root/.DeviantCore3'
+CONFIGFOLDER='/root/.DeviantCore'
 COIN_DAEMON='deviantd'
 COIN_CLI='deviant-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_NAME='Deviant'
 COIN_PORT=22618
 RPC_PORT=22615
+IP_SELECT=1
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -21,7 +22,7 @@ MAG='\e[1;35m'
 
 
 function create_config() {
-  mkdir $CONFIGFOLDER >/dev/null 2>&1
+  mkdir $CONFIGFOLDER$IP_SELECT >/dev/null 2>&1
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
@@ -116,6 +117,7 @@ function get_ip() {
         let INDEX=${INDEX}+1
       done
       read -e choose_ip
+      IP_SELECT=&choose_ip
       NODEIP=${NODE_IPS[$choose_ip]}
   else
     NODEIP=${NODE_IPS[0]}
@@ -127,7 +129,7 @@ function get_ip() {
 function important_information() {
  echo
  echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${PURPLE}Windows Wallet Guide. https://github.com/Realbityoda/Deviant/master/README.md${NC}"
+ echo -e "${PURPLE}multiple vps setup${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${GREEN}$COIN_NAME Masternode is up and running listening on port${NC}${PURPLE}$COIN_PORT${NC}."
  echo -e "${GREEN}Configuration file is:${NC}${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
@@ -139,8 +141,8 @@ function important_information() {
  echo -e "${CYAN}Ensure Node is fully SYNCED with BLOCKCHAIN.${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${GREEN}Usage Commands.${NC}"
- echo -e "${GREEN}deviant-cli $CONFIGFOLDER masternode status${NC}"
- echo -e "${GREEN}deviant-cli $CONFIGFOLDER getinfo${NC}"
+ echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER masternode status${NC}"
+ echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER getinfo${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${RED}Donations always excepted gratefully.${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
@@ -155,6 +157,7 @@ function setup_node() {
   create_key
   update_config  
   important_information  
+  deviantd -datadir=$CONFIGFOLDER -daemon
 }
 
 
