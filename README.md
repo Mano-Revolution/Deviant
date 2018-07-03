@@ -1,8 +1,8 @@
 Setup_guide
 =============
-This repository is for Masternode setup guide
+This repository is for Deviant coin Masternode setup guide
 
-* Devian masternode setup guide
-
-# Using multiple masternode on 1 vps (VULTR)
-
+* deviant_setup.sh
+** basic setup script for masternode
+* multi_setup.sh
+** multiple masternode on 1 vps (VULTR) 
