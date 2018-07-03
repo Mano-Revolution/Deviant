@@ -132,14 +132,18 @@ function important_information() {
  echo -e "${PURPLE}multiple vps setup${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${GREEN}$COIN_NAME Masternode is up and running listening on port${NC}${PURPLE}$COIN_PORT${NC}."
- echo -e "${GREEN}Configuration file is:${NC}${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
+ echo -e "${GREEN}Configuration file is:${NC}${RED}$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE${NC}"
  echo -e "${GREEN}VPS_IP:${NC}${GREEN}$NODEIP:$COIN_PORT${NC}"
  echo -e "${GREEN}MASTERNODE GENKEY is:${NC}${PURPLE}$COINKEY${NC}"
  echo -e "${BLUE}================================================================================================================================"
- echo -e "${CYAN}Follow twitter to stay updated.  https://twitter.com/Real_Bit_Yoda${NC}"
+ echo -e "${CYAN}Temp${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${CYAN}Ensure Node is fully SYNCED with BLOCKCHAIN.${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
+ echo -e "${GREEN}Server start.${NC}"
+ echo -e "${GREEN}deviantd -datadir=$CONFIGFOLDER$IP_SELECT -daemon${NC}"
+ echo -e "${GREEN}Server stop.${NC}"
+ echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT stop${NC}"
  echo -e "${GREEN}Usage Commands.${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT masternode status${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT getinfo${NC}"
@@ -157,7 +161,7 @@ function setup_node() {
   create_key
   update_config  
   important_information  
-  deviantd -datadir=$CONFIGFOLDER -daemon
+  deviantd -datadir=$CONFIGFOLDER$IP_SELECT -daemon
 }
 
 
