@@ -124,24 +124,6 @@ function get_ip() {
 
 
 
-
-function checks() {
-if [[ $(lsb_release -d) != *16.04* ]]; then
-  echo -e "${RED}You are not running Ubuntu 16.04. Installation is cancelled.${NC}"
-  exit 1
-fi
-
-if [[ $EUID -ne 0 ]]; then
-   echo -e "${RED}$0 must be run as root.${NC}"
-   exit 1
-fi
-
-if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
-  echo -e "${RED}$COIN_NAME is already installed.${NC}"
-  exit 1
-fi
-}
-
 function important_information() {
  echo
  echo -e "${BLUE}================================================================================================================================${NC}"
@@ -177,6 +159,4 @@ function setup_node() {
 
 
 ##### Main #####
-clear
-checks
 setup_node
