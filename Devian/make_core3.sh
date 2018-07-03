@@ -117,7 +117,7 @@ function get_ip() {
         let INDEX=${INDEX}+1
       done
       read -e choose_ip
-      IP_SELECT=&choose_ip
+      IP_SELECT=$choose_ip
       NODEIP=${NODE_IPS[$choose_ip]}
   else
     NODEIP=${NODE_IPS[0]}
