@@ -6,7 +6,7 @@ COIN_CLI='deviant-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_NAME='Deviant'
 COIN_PORT=22618
-RPC_PORT=22615
+RPC_PORT=22617
 IP_SELECT=1
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -28,7 +28,7 @@ function create_config() {
   cat << EOF > $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
-rpcport=$RPC_PORT
+rpcport=$RPC_PORT-$IP_SELECT
 rpcallowip=127.0.0.1
 listen=0
 server=1
