@@ -25,10 +25,11 @@ function create_config() {
   mkdir $CONFIGFOLDER$IP_SELECT >/dev/null 2>&1
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
+  let RPC_PORT=$RPC_PORT-$IP_SELECT
   cat << EOF > $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
-rpcport=$RPC_PORT-$IP_SELECT
+rpcport=$RPC_PORT
 rpcallowip=127.0.0.1
 listen=0
 server=1
