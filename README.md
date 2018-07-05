@@ -13,7 +13,7 @@ cd /home;wget https://github.com/Mano-Revolution/Deviant/raw/master/deviant_inst
 ## add masternode
 cd /home;wget https://github.com/Mano-Revolution/Deviant/raw/master/multi_setup.sh; chmod 755 ./multi_setup.sh;./multi_setup.sh
 
-##Linux qt wallet 
+## Linux qt wallet 
 ```
 RUN apt-get update && apt-get install -y software-properties-common && \
   apt-get install -y \
