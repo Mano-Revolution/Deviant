@@ -282,8 +282,6 @@ function important_information() {
  echo -e "${CYAN}Ensure Node is fully SYNCED with BLOCKCHAIN.${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${GREEN}Usage Commands.${NC}"
- echo -e "${GREEN}systemctl start Deviant.service${NC}"
- echo -e "${GREEN}systemctl stop Deviant.service${NC}"
  echo -e "${GREEN}deviant-cli masternode status${NC}"
  echo -e "${GREEN}deviant-cli getinfo${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
