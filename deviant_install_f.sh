@@ -253,7 +253,7 @@ clear
 function important_information() {
  echo
  echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${PURPLE}Windows Wallet Guide. https://github.com/Realbityoda/Deviant/master/README.md${NC}"
+ echo -e "${PURPLE}Windows Wallet Guide. update guide link${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${GREEN}$COIN_NAME Masternode is up and running listening on port${NC}${PURPLE}$COIN_PORT${NC}."
  echo -e "${GREEN}Configuration file is:${NC}${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
@@ -269,10 +269,6 @@ function important_information() {
  echo -e "${GREEN}Usage Commands.${NC}"
  echo -e "${GREEN}deviant-cli masternode status${NC}"
  echo -e "${GREEN}deviant-cli getinfo${NC}"
- echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${RED}Donations always excepted gratefully.${NC}"
- echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${YELLOW}DEV: dSVL2RD33473g5RKSQMuzvjm4CgVXjC4qX${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  
  }
