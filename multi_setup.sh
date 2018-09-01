@@ -1,3 +1,4 @@
+#!/bin/bash
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='deviant.conf'
 COIN_DAEMON='deviantd'
