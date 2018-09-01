@@ -9,7 +9,7 @@ COIN_NAME='Deviant'
 COIN_TGZ='https://github.com/Deviantcoin/Wallet/raw/master/dev-3.0.0.1-linux-x86_64.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_PORT=22618
-RPC_PORT=2262$IP_SELECT
+RPC_PORT=22617
 
 
 BLUE="\033[0;34m"
@@ -79,9 +79,9 @@ function download_node() {
 
 function custom_exe() {
   echo '#!/bin/bash' > $COIN_PATH$COIN_CLI$IP_SELECT.sh
-  echo '$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT' >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
+  echo '$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT $@' >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_CLI$IP_SELECT.sh
-  echo '$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT' >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
+  echo '$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT $@' >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   clear
 }
@@ -107,13 +107,11 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
-  systemctl daemon-reload
-  systemctl enable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
-  systemctl start $COIN_NAME$IP_SELECT.service
-  sleep 3
-  
-
- netstat -napt | grep LISTEN | grep $NODEID | grep $COIN_DAEMON
+systemctl daemon-reload
+systemctl enable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
+systemctl start $COIN_NAME$IP_SELECT.service
+sleep 3
+netstat -napt | grep LISTEN | grep $NODEID | grep $COIN_DAEMON
  if [[ $? -ne 0 ]]; then
    declare -a ERRSTATUS
    ERRSTATUS=TRUE
@@ -131,8 +129,9 @@ if [ $SWAPSIZE -lt 4000000 ]
     swapon /swapfile
     echo '/swapfile none swap sw 0 0' >> /etc/fstab
     fi
-  else echo 'Swap size looks good'
+  else echo 'Swap seems smaller than recommended. It cannot be increased because of lack of space'
 fi  
+}
 
 function create_config() {
   mkdir $CONFIGFOLDER$IP_SELECT >/dev/null 2>&1
@@ -155,20 +154,20 @@ function create_key() {
   echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}."
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
-  $COIN_PATH$COIN_DAEMON -daemon
+  $COIN_PATH$COIN_DAEMON$IP_SELECT.sh -daemon
   sleep 30
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
   fi
-  COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+  COINKEY=$($COIN_PATH$COIN_CLI$IP_SELECT.sh masternode genkey)
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
     sleep 30
-    COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+    COINKEY=$($COIN_PATH$COIN_CLI$IP_SELECT.sh masternode genkey)
   fi
-  $COIN_PATH$COIN_CLI stop
+  $COIN_PATH$COIN_CLI$IP_SELECT.sh stop
 fi
 clear
 }
@@ -237,16 +236,23 @@ function important_information() {
  echo -e "${BLUE}================================================================================================================================"
  echo -e "${CYAN}Temp${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${CYAN}Ensure Node is fully SYNCED with BLOCKCHAIN.${NC}"
+ echo -e "${CYAN}Ensure Node is fully SYNCED with BLOCKCHAIN (with cli or with custom cli command).${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${PURPLE}Server start.${NC}"
+ echo -e "${PURPLE}Server start (with cli or with custom cli command).${NC}"
  echo -e "${GREEN}deviantd -datadir=$CONFIGFOLDER$IP_SELECT -daemon${NC}"
+ echo -e "${GREEN}$COIN_PATH$COIN_DAEMON$IP_SELECT.sh -daemon${NC}"
+ echo -e "${PURPLE}Server start (with systemctl).${NC}"
+ echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service${NC}"
  echo -e "${PURPLE}Server stop.${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT stop${NC}"
+ echo -e "${GREEN}$COIN_PATH$COIN_CLI$IP_SELECT.sh stop${NC}"
  echo -e "${PURPLE}Usage Commands.${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT masternode status${NC}"
+ echo -e "${GREEN}$COIN_PATH$COIN_CLI$IP_SELECT.sh masternode status${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT getinfo${NC}"
+ echo -e "$COIN_PATH$COIN_CLI$IP_SELECT.sh getinfo${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT mnsync status${NC}"
+ echo -e "${GREEN}$COIN_PATH$COIN_CLI$IP_SELECT.sh mnsync status${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  if [[ "$ERRSTATUS" == "$TRUE" ]]; then
     echo -e "${RED}$COIN_NAME$IP_SELECT seems not running${NC}, please investigate. Check its status by running the following commands as root:"
