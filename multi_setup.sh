@@ -20,9 +20,8 @@ RED='\033[0;31m'
 GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
-## TODo: Add function to get latest precompiled daemon (static lib, no deps needed)
+
 ## ToDO: Check user running the script, root is needed
-## ToDo: Add service definition for systemctl
 ## ToDo: Add a check to verify if daemon is running
 
 function download_node() {
