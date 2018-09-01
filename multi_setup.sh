@@ -9,7 +9,7 @@ COIN_NAME='Deviant'
 COIN_TGZ='https://github.com/Deviantcoin/Wallet/raw/master/dev-3.0.0.1-linux-x86_64.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_PORT=22618
-RPC_PORT=22617
+RPC_PORT=2262$IP_SELECT
 
 
 BLUE="\033[0;34m"
@@ -34,8 +34,23 @@ function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
-  compile_error
-  unzip -j $COIN_ZIP *$COIN_DAEMON *$COIN_CLI -d $COIN_PATH >/dev/null 2>&1
+  if [[ $? -ne 0 ]]; then
+   echo -e 'Error downloading node. Please contact support'
+   exit 1
+  fi
+  if [[ -f $COIN_PATH$COIN_DAEMON ]]: then
+  unzip -j $COIN_ZIP *$COIN_DAEMON
+  MD5SUMOLD=$(md5sum $COIN_PATH$COIN_DAEMON | awk '{print $1}')
+  MD5SUMNEW=$(md5sum $COIN_DAEMON | awk '{print $1}')
+  pidof $COIN_DAEMON
+  RC=$?
+   if [[ "$MD5SUMOLD" -ne "$MD5SUMNEW" && "$RC" -eq 0 ]]; then
+     echo -e 'Those daemon(s) are about to die'
+     echo -e $(ps axo cmd:100 | grep $COIN_DAEMON | grep -v grep)
+     echo -e 'If no check is implemented, take care of their restart'
+     killall $COIN_DAEMON
+   fi
+  unzip -o -j $COIN_ZIP *$COIN_DAEMON *$COIN_CLI -d $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
