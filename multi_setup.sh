@@ -77,10 +77,12 @@ function download_node() {
   clear
 }
 
-function custom_cli() {
+function custom_exe() {
   echo '#!/bin/bash' > $COIN_PATH$COIN_CLI$IP_SELECT.sh
   echo '$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT' >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_CLI$IP_SELECT.sh
+  echo '$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT' >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
+  chmod 755 $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   clear
 }
 
@@ -113,14 +115,9 @@ EOF
 
  netstat -napt | grep LISTEN | grep $NODEID | grep $COIN_DAEMON
  if [[ $? -ne 0 ]]; then
-    echo -e "${RED}$COIN_NAME$IP_SELECT seems not running${NC}, please investigate. Check its status by running the following commands as root:"
-    echo -e "systemctl status $COIN_NAME$IP_SELECT.service"
-    echo -e "You can restart it by firing following command (as root):
-    echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service"
-    echo -e "Check errors by runnig following command:"
-    echo -e "less /var/log/syslog${NC}"
-    echo -e "journalctl -xe"
-  fi
+   declare -a ERRSTATUS
+   ERRSTATUS=TRUE
+ fi
 }
 
 function check_swap() {
@@ -270,7 +267,7 @@ function setup_node() {
   get_ip
   it_exists
   create_config
-  custom_cli
+  custom_exe
   create_key
   update_config
   configure_systemd
