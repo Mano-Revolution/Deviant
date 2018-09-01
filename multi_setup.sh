@@ -1,15 +1,12 @@
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='deviant.conf'
-CONFIGFOLDER='/root/.DeviantCore'
 COIN_DAEMON='deviantd'
 COIN_CLI='deviant-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_NAME='Deviant'
 COIN_PORT=22618
 RPC_PORT=22617
-IP_SELECT=1
 
-NODEIP=$(curl -s4 icanhazip.com)
 
 BLUE="\033[0;34m"
 YELLOW="\033[0;33m"
@@ -19,7 +16,24 @@ RED='\033[0;31m'
 GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
+## TODo: Add check on distro (or use static precompiled daemon)
+## ToDO: Check user running the script, root is needed
+## ToDo: Add service definition for systemctl
+## ToDo: Add a check to verify if daemon is running
 
+function check_swap() {
+SWAPSIZE=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
+FREESPACE=$(df / | tail -1 | awk '{print $3}')
+if [ $SWAPSIZE -lt 4000000 ]
+  then if [ $FREESPACE -gt 6000000 ]
+    then fallocate -l 4G /swapfile
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    echo '/swapfile none swap sw 0 0' >> /etc/fstab
+    fi
+  else echo 'Swap size looks good'
+fi  
 
 function create_config() {
   mkdir $CONFIGFOLDER$IP_SELECT >/dev/null 2>&1
