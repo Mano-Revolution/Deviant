@@ -1,10 +1,13 @@
 #!/bin/bash
 TMP_FOLDER=$(mktemp -d)
+CONFIGFOLDER=$HOME/.DeviantCore
 CONFIG_FILE='deviant.conf'
 COIN_DAEMON='deviantd'
 COIN_CLI='deviant-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_NAME='Deviant'
+COIN_TGZ='https://github.com/Deviantcoin/Wallet/raw/master/dev-3.0.0.1-linux-x86_64.zip'
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_PORT=22618
 RPC_PORT=22617
 
@@ -21,6 +24,56 @@ MAG='\e[1;35m'
 ## ToDO: Check user running the script, root is needed
 ## ToDo: Add service definition for systemctl
 ## ToDo: Add a check to verify if daemon is running
+
+function download_node() {
+  echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
+  cd $TMP_FOLDER >/dev/null 2>&1
+  wget -q $COIN_TGZ
+  compile_error
+  unzip -j $COIN_ZIP *$COIN_DAEMON *$COIN_CLI -d $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
+  cd ~ >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
+  clear
+}
+
+function configure_systemd() {
+  cat << EOF > /etc/systemd/system/$COIN_NAME$IP_SELECT.service
+[Unit]
+Description=$COIN_NAME$IP_SELECT service
+After=network.target
+[Service]
+User=root
+Group=root
+Type=forking
+#PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
+ExecStart=$COIN_PATH$COIN_DAEMON -daemon -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT
+ExecStop=-$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT stop
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=10s
+StartLimitInterval=120s
+StartLimitBurst=5
+[Install]
+WantedBy=multi-user.target
+EOF
+
+  systemctl daemon-reload
+  sleep 3
+  systemctl start $COIN_NAME$IP_SELECT.service
+  systemctl enable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
+
+ #To be done: use netstat | LISTEN | NODEIP if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
+ netstat -napt | grep LISTEN | grep $NODEID
+ if [[ $? -ne 0 ]]; then
+    echo -e "${RED}$COIN_NAME$IP_SELECT is not running${NC}, please investigate. You should start by running the following commands as root:"
+    echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service"
+    echo -e "systemctl status $COIN_NAME$IP_SELECT.service"
+    echo -e "less /var/log/syslog${NC}"
+    exit 1
+  fi
+}
 
 function check_swap() {
 SWAPSIZE=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
