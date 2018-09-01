@@ -205,7 +205,7 @@ function get_ip() {
   declare -a NODE_IPS
   for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
   do
-    NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
+    NODE_IPS+=($(curl --interface $ips --connect-timeout 4 -s4 icanhazip.com))
   done
 
   if [ ${#NODE_IPS[@]} -gt 1 ]
@@ -251,6 +251,15 @@ function important_information() {
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT getinfo${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT mnsync status${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
+ if [[ "$ERRSTATUS" == "$TRUE" ]]; then
+    echo -e "${RED}$COIN_NAME$IP_SELECT seems not running${NC}, please investigate. Check its status by running the following commands as root:"
+    echo -e "systemctl status $COIN_NAME$IP_SELECT.service"
+    echo -e "You can restart it by firing following command (as root):
+    echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service"
+    echo -e "Check errors by runnig following command:"
+    echo -e "less /var/log/syslog${NC}"
+    echo -e "journalctl -xe"
+ fi
  
  }
 
@@ -259,10 +268,11 @@ function setup_node() {
   check_swap
   download_node
   get_ip
+  it_exists
   create_config
+  custom_cli
   create_key
   update_config
-  custom_cli
   configure_systemd
   important_information
 }
