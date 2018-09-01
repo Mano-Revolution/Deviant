@@ -30,6 +30,26 @@ if [[ $EUID -ne 0 ]]; then
 fi
 }
 
+function it_exists() {
+if [[ -d $CONFIGFOLDER$IP_SELECT ]]; then
+  echo -e 'It seems a $COIN_NAME instance is already installed in $CONFIGFOLDER$IP_SELECT'
+  echo -e 'Type y to scratch it (be carefull, if you are staking, also your wallet will be erased)'
+  echo -e 'Type n to exit'
+fi
+read -e ANSWER
+case $ANSWER in
+     y)      
+          fuser -k $CONFIGFOLDER$IP_SELECT
+          rm -rf $CONFIGFOLDER$IP_SELECT
+          ;;
+     n)      
+          exit 0
+          ;;
+     *)
+          it_exists
+          ;; 
+esac
+
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
