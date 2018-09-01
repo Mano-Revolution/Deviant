@@ -21,8 +21,14 @@ GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
 
-## ToDO: Check user running the script, root is needed
 ## ToDo: Add a check to verify if daemon is running
+
+function check_user() {
+if [[ $EUID -ne 0 ]]; then
+   echo -e "${RED}$0 must be run as root.${NC}"
+   exit 1
+fi
+}
 
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
@@ -36,6 +42,13 @@ function download_node() {
   clear
 }
 
+function custom_cli() {
+  echo '#!/bin/bash' > $COIN_PATH$COIN_CLI$IP_SELECT.sh
+  echo '$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT' >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
+  chmod 755 $COIN_PATH$COIN_CLI$IP_SELECT.sh
+  clear
+}
+
 function configure_systemd() {
   cat << EOF > /etc/systemd/system/$COIN_NAME$IP_SELECT.service
 [Unit]
@@ -45,7 +58,6 @@ After=network.target
 User=root
 Group=root
 Type=forking
-#PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
 ExecStart=$COIN_PATH$COIN_DAEMON -daemon -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT
 ExecStop=-$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT stop
 Restart=always
@@ -59,18 +71,20 @@ WantedBy=multi-user.target
 EOF
 
   systemctl daemon-reload
-  sleep 3
-  systemctl start $COIN_NAME$IP_SELECT.service
   systemctl enable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
+  systemctl start $COIN_NAME$IP_SELECT.service
+  sleep 3
+  
 
- #To be done: use netstat | LISTEN | NODEIP if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
- netstat -napt | grep LISTEN | grep $NODEID
+ netstat -napt | grep LISTEN | grep $NODEID | grep $COIN_DAEMON
  if [[ $? -ne 0 ]]; then
-    echo -e "${RED}$COIN_NAME$IP_SELECT is not running${NC}, please investigate. You should start by running the following commands as root:"
-    echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service"
+    echo -e "${RED}$COIN_NAME$IP_SELECT seems not running${NC}, please investigate. Check its status by running the following commands as root:"
     echo -e "systemctl status $COIN_NAME$IP_SELECT.service"
+    echo -e "You can restart it by firing following command (as root):
+    echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service"
+    echo -e "Check errors by runnig following command:"
     echo -e "less /var/log/syslog${NC}"
-    exit 1
+    echo -e "journalctl -xe"
   fi
 }
 
@@ -136,34 +150,18 @@ bind=$NODEIP
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-#Addnodes
-addnode=124.210.53.254:22618
-addnode=159.69.22.1:22618
-addnode=185.8.61.236:22618
-addnode=149.28.146.137:22618
-addnode=104.238.187.116:22618
-addnode=95.179.161.41:22618
-addnode=31.171.251.72:22618
-addnode=176.223.134.3:22618
-addnode=45.76.82.15:22618
-addnode=207.246.99.107:22618
-addnode=45.77.234.110:22618
-addnode=31.214.144.78:22618
-addnode=31.172.83.201:22618
-addnode=73.136.180.60:22618
-addnode=95.216.27.109:22618
-addnode=80.240.29.36:22618
-addnode=209.97.139.2:22618
-addnode=45.35.64.39:22618
-addnode=138.197.146.236:22618
-addnode=167.99.234.81:22618
-addnode=206.189.155.48:22618
-addnode=209.97.131.147:22618
-addnode=209.97.131.20:22618
-addnode=209.97.139.20:22618
-addnode=219.74.243.91:22618
-addnode=109.10.53.168:22618
-addnode=178.239.54.249:22618
+#Addnodes: clear comment if dnsseeds fails. Check output in debug.log file
+#addnode=209.97.139.2
+#addnode=45.35.64.39
+#addnode=138.197.146.236
+#addnode=167.99.234.81
+#addnode=206.189.155.48
+#addnode=209.97.131.147
+#addnode=209.97.131.20
+#addnode=209.97.139.20
+#addnode=219.74.243.91:22618
+#addnode=109.10.53.168:22618
+#addnode=178.239.54.249:22618
 EOF
 }
 
@@ -189,6 +187,7 @@ function get_ip() {
       NODEIP=${NODE_IPS[$choose_ip]}
   else
     NODEIP=${NODE_IPS[0]}
+    IP_SELECT=1
   fi
 }
 
@@ -217,20 +216,20 @@ function important_information() {
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT getinfo${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT mnsync status${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${RED}Donations always excepted gratefully.${NC}"
- echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${YELLOW}DEV: dEp6T4PVNHFb6wyJMGuJQbt1uSJ9icY5CW${NC}"
- echo -e "${BLUE}================================================================================================================================${NC}"
  
  }
 
 function setup_node() {
+  check_user
+  check_swap
+  download_node
   get_ip
   create_config
   create_key
-  update_config  
-  important_information  
-  deviantd -datadir=$CONFIGFOLDER$IP_SELECT -daemon
+  update_config
+  custom_cli
+  configure_systemd
+  important_information
 }
 
 
