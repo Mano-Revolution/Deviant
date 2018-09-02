@@ -141,6 +141,7 @@ function create_config() {
   mkdir $CONFIGFOLDER$IP_SELECT >/dev/null 2>&1
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
+  let IP_SELECT=$IP_SELECT+1
   let RPC_PORT=$RPC_PORT-$IP_SELECT
   cat << EOF > $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
 rpcuser=$RPCUSER
