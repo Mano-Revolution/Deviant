@@ -67,7 +67,7 @@ function download_node() {
   MD5SUMNEW=$(md5sum $COIN_DAEMON | awk '{print $1}')
   pidof $COIN_DAEMON
   RC=$?
-   if [[ "$MD5SUMOLD" -ne "$MD5SUMNEW" && "$RC" -eq 0 ]]; then
+   if [[ "$MD5SUMOLD" != "$MD5SUMNEW" && "$RC" -eq 0 ]]; then
      echo -e 'Those daemon(s) are about to die'
      echo -e $(ps axo cmd:100 | grep $COIN_DAEMON | grep -v grep)
      echo -e 'If no check is implemented, take care of their restart'
