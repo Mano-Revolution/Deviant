@@ -141,8 +141,10 @@ function create_config() {
   mkdir $CONFIGFOLDER$IP_SELECT >/dev/null 2>&1
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
-  let IP_SELECT=$IP_SELECT+1
-  let RPC_PORT=$RPC_PORT-$IP_SELECT
+  if [[ -z "$IP_SELECT" ]]; then
+   RPC_PORT=$RPC_PORT
+   else let RPC_PORT=$RPC_PORT-$IP_SELECT
+  fi
   cat << EOF > $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
@@ -265,7 +267,7 @@ function important_information() {
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT mnsync status${NC}"
  echo -e "${GREEN}$COIN_CLI$IP_SELECT.sh mnsync status${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
- if [[ "$ERRSTATUS" == "$TRUE" ]]; then
+ if [[ "$ERRSTATUS" == "TRUE" ]]; then
     echo -e "${RED}$COIN_NAME$IP_SELECT seems not running, please investigate. Check its status by running the following commands as root:${NC}"
     echo -e "systemctl status $COIN_NAME$IP_SELECT.service"
     echo -e "${RED}You can restart it by firing following command (as root):${NC}"
