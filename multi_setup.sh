@@ -39,9 +39,9 @@ if [[ -d $CONFIGFOLDER$IP_SELECT ]]; then
 read -e ANSWER
 case $ANSWER in
      y)      
-          systemctl stop $COIN_NAME$IP_SELECT.service
-          systemctl disable $COIN_NAME$IP_SELECT.service
-          kill -9 $(pidof $COIN_DAEMON)
+          systemctl stop $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
+          systemctl disable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
+          kill -9 $(pidof $COIN_DAEMON) >/dev/null 2>&1
           rm -rf $CONFIGFOLDER$IP_SELECT
           ;;
      n)      
