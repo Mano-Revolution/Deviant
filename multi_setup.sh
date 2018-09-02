@@ -38,7 +38,7 @@ if [[ -d $CONFIGFOLDER$IP_SELECT ]]; then
 read -e ANSWER
 case $ANSWER in
      y)      
-          fuser -k $CONFIGFOLDER$IP_SELECT
+          kill -9 $(pidof deviantd)
           rm -rf $CONFIGFOLDER$IP_SELECT
           ;;
      n)      
