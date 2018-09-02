@@ -22,6 +22,7 @@ NC='\033[0m'
 MAG='\e[1;35m'
 
 ## ToDO: function to install mandatory tools, like unzip and curl
+## ToDo: warnign about missing bind parameter if a MN is already installed
 
 function check_user() {
 if [[ $EUID -ne 0 ]]; then
@@ -216,7 +217,8 @@ function get_ip() {
 
   if [ ${#NODE_IPS[@]} -gt 1 ]
     then
-      echo -e "${GREEN}More than one IP. Please type ENTER to use the first IP, type 1 for the second and so on...${NC}"
+      echo -e "${GREEN}More than one IP. Please press ENTER to use the first IP, type 1 for the second and so on...${NC}"
+      echo -e "${GREEN}If a $COIN_NAME is already running on this host, we recommend to press ENTER${NC}"
       INDEX=
       for ip in "${NODE_IPS[@]}"
       do
