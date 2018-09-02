@@ -21,7 +21,8 @@ GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
 
-## ToDo: Add a check to verify if daemon is running
+## ToDo: disable systemctl during scratch
+## ToDo: fix md5sum comparison
 
 function check_user() {
 if [[ $EUID -ne 0 ]]; then
