@@ -23,6 +23,7 @@ MAG='\e[1;35m'
 
 ## ToDo: disable systemctl during scratch
 ## ToDo: fix md5sum comparison
+## ToDO: function to install mandatory tools, like unzip and curl
 
 function check_user() {
 if [[ $EUID -ne 0 ]]; then
