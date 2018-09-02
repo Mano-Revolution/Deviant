@@ -1,6 +1,6 @@
 # Deviant Multi Masternode script
 Prerequisites:
-1. you need "unzip" and "curl" utility.
+1. you need "unzip" and "curl" utilities.
 On ubuntu just type:
 ```apt install unzip curl```
 2. you need several public ips to run several MNs. The script will check it for you, if it find only one public ip, you can install only one MN
