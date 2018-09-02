@@ -126,7 +126,7 @@ SWAPSIZE=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
 FREESPACE=$(df / | tail -1 | awk '{print $4}')
 if [ $SWAPSIZE -lt 4000000 ]
   then if [ $FREESPACE -gt 6000000 ]
-    then fallocate -l 4G /swapfile
+    then dd if=/dev/zero of=/swapfile bs=4G count=1 
     chmod 600 /swapfile
     mkswap /swapfile
     swapon /swapfile
