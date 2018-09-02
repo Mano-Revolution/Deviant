@@ -21,7 +21,6 @@ GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
 
-## ToDo: disable systemctl during scratch
 ## ToDO: function to install mandatory tools, like unzip and curl
 
 function check_user() {
@@ -34,6 +33,8 @@ fi
 function it_exists() {
 if [[ -d $CONFIGFOLDER$IP_SELECT ]]; then
   echo -e "It seems a $COIN_NAME instance is already installed in $CONFIGFOLDER$IP_SELECT"
+  echo -e "Save masternodeprivkey if you want to use it again"
+  echo -e $(cat $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE|grep masternodeprivkey |cut -d "=" -f2)
   echo -e "Type y to scratch it (be carefull, if you are staking on this VPS, also your wallet will be erased)"
   echo -e "Type n to exit"
 read -e ANSWER
