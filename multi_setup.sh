@@ -32,9 +32,9 @@ fi
 
 function it_exists() {
 if [[ -d $CONFIGFOLDER$IP_SELECT ]]; then
-  echo -e 'It seems a $COIN_NAME instance is already installed in $CONFIGFOLDER$IP_SELECT'
-  echo -e 'Type y to scratch it (be carefull, if you are staking, also your wallet will be erased)'
-  echo -e 'Type n to exit'
+  echo -e "It seems a $COIN_NAME instance is already installed in $CONFIGFOLDER$IP_SELECT"
+  echo -e "Type y to scratch it (be carefull, if you are staking on this VPS, also your wallet will be erased)"
+  echo -e "Type n to exit"
 read -e ANSWER
 case $ANSWER in
      y)      
@@ -114,7 +114,7 @@ systemctl daemon-reload
 systemctl enable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
 systemctl start $COIN_NAME$IP_SELECT.service
 sleep 3
-netstat -napt | grep LISTEN | grep $NODEID | grep $COIN_DAEMON
+netstat -napt | grep LISTEN | grep $NODEIP | grep $COIN_DAEMON
  if [[ $? -ne 0 ]]; then
    declare -a ERRSTATUS
    ERRSTATUS=TRUE
