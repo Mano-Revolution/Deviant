@@ -211,23 +211,26 @@ function get_ip() {
 
   if [ ${#NODE_IPS[@]} -gt 1 ]
     then
-      echo -e "${GREEN}More than one IP. Please type 0 to use the first IP, 1 for the second and so on...${NC}"
-      INDEX=0
+      echo -e "${GREEN}More than one IP. Please type ENTER to use the first IP, type 1 for the second and so on...${NC}"
+      INDEX=
       for ip in "${NODE_IPS[@]}"
       do
         echo ${INDEX} $ip
         let INDEX=${INDEX}+1
       done
       read -e choose_ip
+      echo ${NODE_IPS[@]} | grep ${NODE_IPS[$choose_ip]} >/dev/null 2>&1
+      if [[ $? -ne 0 ]];
+        then echo "Choosen value not in list"
+        get_ip
+      fi
       IP_SELECT=$choose_ip
       NODEIP=${NODE_IPS[$choose_ip]}
   else
     NODEIP=${NODE_IPS[0]}
-    IP_SELECT=1
+    IP_SELECT=
   fi
 }
-
-
 
 function important_information() {
  echo
