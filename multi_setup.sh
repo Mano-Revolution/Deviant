@@ -35,7 +35,6 @@ if [[ -d $CONFIGFOLDER$IP_SELECT ]]; then
   echo -e 'It seems a $COIN_NAME instance is already installed in $CONFIGFOLDER$IP_SELECT'
   echo -e 'Type y to scratch it (be carefull, if you are staking, also your wallet will be erased)'
   echo -e 'Type n to exit'
-fi
 read -e ANSWER
 case $ANSWER in
      y)      
@@ -49,6 +48,8 @@ case $ANSWER in
           it_exists
           ;; 
 esac
+fi
+}
 
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
@@ -58,7 +59,7 @@ function download_node() {
    echo -e 'Error downloading node. Please contact support'
    exit 1
   fi
-  if [[ -f $COIN_PATH$COIN_DAEMON ]]: then
+  if [[ -f $COIN_PATH$COIN_DAEMON ]]; then
   unzip -j $COIN_ZIP *$COIN_DAEMON
   MD5SUMOLD=$(md5sum $COIN_PATH$COIN_DAEMON | awk '{print $1}')
   MD5SUMNEW=$(md5sum $COIN_DAEMON | awk '{print $1}')
@@ -70,6 +71,7 @@ function download_node() {
      echo -e 'If no check is implemented, take care of their restart'
      killall $COIN_DAEMON
    fi
+  fi
   unzip -o -j $COIN_ZIP *$COIN_DAEMON *$COIN_CLI -d $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
   cd ~ >/dev/null 2>&1
@@ -79,10 +81,10 @@ function download_node() {
 
 function custom_exe() {
   echo '#!/bin/bash' > $COIN_PATH$COIN_CLI$IP_SELECT.sh
-  echo '$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT $@' >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
+  echo "$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT $@" >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_CLI$IP_SELECT.sh
   echo '#!/bin/bash' > $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
-  echo '$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT $@' >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
+  echo "$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT $@" >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   clear
 }
@@ -121,7 +123,7 @@ netstat -napt | grep LISTEN | grep $NODEID | grep $COIN_DAEMON
 
 function check_swap() {
 SWAPSIZE=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
-FREESPACE=$(df / | tail -1 | awk '{print $3}')
+FREESPACE=$(df / | tail -1 | awk '{print $4}')
 if [ $SWAPSIZE -lt 4000000 ]
   then if [ $FREESPACE -gt 6000000 ]
     then fallocate -l 4G /swapfile
@@ -200,7 +202,7 @@ EOF
 
 function get_ip() {
   declare -a NODE_IPS
-  for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
+  for ips in $(ip a | grep inet | awk '{print $2}' | cut -f1 -d "/")
   do
     NODE_IPS+=($(curl --interface $ips --connect-timeout 4 -s4 icanhazip.com))
   done
@@ -256,9 +258,9 @@ function important_information() {
  echo -e "${GREEN}$COIN_PATH$COIN_CLI$IP_SELECT.sh mnsync status${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  if [[ "$ERRSTATUS" == "$TRUE" ]]; then
-    echo -e "${RED}$COIN_NAME$IP_SELECT seems not running${NC}, please investigate. Check its status by running the following commands as root:"
+    echo -e "${RED}$COIN_NAME$IP_SELECT seems not running, please investigate. Check its status by running the following commands as root:${NC}"
     echo -e "systemctl status $COIN_NAME$IP_SELECT.service"
-    echo -e "You can restart it by firing following command (as root):"
+    echo -e "${RED}You can restart it by firing following command (as root):${NC}"
     echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service"
     echo -e "Check errors by runnig following commands:"
     echo -e "less /var/log/syslog${NC}"
