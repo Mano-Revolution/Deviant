@@ -257,9 +257,9 @@ function important_information() {
  if [[ "$ERRSTATUS" == "$TRUE" ]]; then
     echo -e "${RED}$COIN_NAME$IP_SELECT seems not running${NC}, please investigate. Check its status by running the following commands as root:"
     echo -e "systemctl status $COIN_NAME$IP_SELECT.service"
-    echo -e "You can restart it by firing following command (as root):
+    echo -e "You can restart it by firing following command (as root):"
     echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service"
-    echo -e "Check errors by runnig following command:"
+    echo -e "Check errors by runnig following commands:"
     echo -e "less /var/log/syslog${NC}"
     echo -e "journalctl -xe"
  fi
