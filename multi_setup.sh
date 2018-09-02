@@ -249,6 +249,8 @@ function important_information() {
  echo -e "${PURPLE}Server stop.${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT stop${NC}"
  echo -e "${GREEN}$COIN_CLI$IP_SELECT.sh stop${NC}"
+ echo -e "${PURPLE}Server stop (with systemctl).${NC}"
+ echo -e "${GREEN}systemctl stop $COIN_NAME$IP_SELECT.service${NC}"
  echo -e "${PURPLE}Usage Commands.${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT masternode status${NC}"
  echo -e "${GREEN}$COIN_CLI$IP_SELECT.sh masternode status${NC}"
