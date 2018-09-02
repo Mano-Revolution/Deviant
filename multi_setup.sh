@@ -113,10 +113,9 @@ EOF
 systemctl daemon-reload
 systemctl enable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
 systemctl start $COIN_NAME$IP_SELECT.service
-sleep 3
+sleep 8
 netstat -napt | grep LISTEN | grep $NODEIP | grep $COIN_DAEMON
  if [[ $? -ne 0 ]]; then
-   declare -a ERRSTATUS
    ERRSTATUS=TRUE
  fi
 }
