@@ -147,11 +147,11 @@ function create_config() {
    else let RPC_PORT=$RPC_PORT-$IP_SELECT
   fi
   cat << EOF > $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
-rpcuser=$RPCUSER
-rpcpassword=$RPCPASSWORD
+#Uncomment RPC credentials if you don't want to use local cookie for auth
+#rpcuser=$RPCUSER
+#rpcpassword=$RPCPASSWORD
 rpcport=$RPC_PORT
 rpcallowip=127.0.0.1
-listen=0
 server=1
 daemon=1
 port=$COIN_PORT
