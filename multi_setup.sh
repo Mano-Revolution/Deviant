@@ -81,10 +81,10 @@ function download_node() {
 
 function custom_exe() {
   echo '#!/bin/bash' > $COIN_PATH$COIN_CLI$IP_SELECT.sh
-  echo "$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT $@" >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
+  echo "$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT '$@'" >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_CLI$IP_SELECT.sh
   echo '#!/bin/bash' > $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
-  echo "$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT $@" >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
+  echo "$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT '$@'" >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   clear
 }
@@ -124,15 +124,15 @@ netstat -napt | grep LISTEN | grep $NODEID | grep $COIN_DAEMON
 function check_swap() {
 SWAPSIZE=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
 FREESPACE=$(df / | tail -1 | awk '{print $4}')
-if [ $SWAPSIZE -lt 4000000 ]
+if [ $SWAPSIZE -lt 400000 ]
   then if [ $FREESPACE -gt 6000000 ]
-    then dd if=/dev/zero of=/swapfile bs=4G count=1 
+    then dd if=/dev/zero of=/swapfile bs=250MB count=16 
     chmod 600 /swapfile
     mkswap /swapfile
     swapon /swapfile
     echo '/swapfile none swap sw 0 0' >> /etc/fstab
+    else echo 'Swap seems smaller than recommended. It cannot be increased because of lack of space'
     fi
-  else echo 'Swap seems smaller than recommended. It cannot be increased because of lack of space'
 fi  
 }
 
