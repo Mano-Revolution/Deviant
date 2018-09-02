@@ -81,10 +81,10 @@ function download_node() {
 
 function custom_exe() {
   echo '#!/bin/bash' > $COIN_PATH$COIN_CLI$IP_SELECT.sh
-  echo "$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT '$@'" >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
+  echo "$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT \$@" >> $COIN_PATH$COIN_CLI$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_CLI$IP_SELECT.sh
   echo '#!/bin/bash' > $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
-  echo "$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT '$@'" >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
+  echo "$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER$IP_SELECT/$CONFIG_FILE -datadir=$CONFIGFOLDER$IP_SELECT \$@" >> $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   chmod 755 $COIN_PATH$COIN_DAEMON$IP_SELECT.sh
   clear
 }
@@ -154,7 +154,8 @@ EOF
 }
 
 function create_key() {
-  echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}."
+  echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}"
+  echo -e "${YELLOW}Press enter to let the script generate one${NC}"
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON$IP_SELECT.sh -daemon
@@ -243,28 +244,28 @@ function important_information() {
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${PURPLE}Server start (with cli or with custom cli command).${NC}"
  echo -e "${GREEN}deviantd -datadir=$CONFIGFOLDER$IP_SELECT -daemon${NC}"
- echo -e "${GREEN}$COIN_PATH$COIN_DAEMON$IP_SELECT.sh -daemon${NC}"
+ echo -e "${GREEN}$COIN_DAEMON$IP_SELECT.sh -daemon${NC}"
  echo -e "${PURPLE}Server start (with systemctl).${NC}"
  echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service${NC}"
  echo -e "${PURPLE}Server stop.${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT stop${NC}"
- echo -e "${GREEN}$COIN_PATH$COIN_CLI$IP_SELECT.sh stop${NC}"
+ echo -e "${GREEN}$COIN_CLI$IP_SELECT.sh stop${NC}"
  echo -e "${PURPLE}Usage Commands.${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT masternode status${NC}"
- echo -e "${GREEN}$COIN_PATH$COIN_CLI$IP_SELECT.sh masternode status${NC}"
+ echo -e "${GREEN}$COIN_CLI$IP_SELECT.sh masternode status${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT getinfo${NC}"
- echo -e "$COIN_PATH$COIN_CLI$IP_SELECT.sh getinfo${NC}"
+ echo -e "${GREEN}$COIN_CLI$IP_SELECT.sh getinfo${NC}"
  echo -e "${GREEN}deviant-cli -datadir=$CONFIGFOLDER$IP_SELECT mnsync status${NC}"
- echo -e "${GREEN}$COIN_PATH$COIN_CLI$IP_SELECT.sh mnsync status${NC}"
+ echo -e "${GREEN}$COIN_CLI$IP_SELECT.sh mnsync status${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  if [[ "$ERRSTATUS" == "$TRUE" ]]; then
     echo -e "${RED}$COIN_NAME$IP_SELECT seems not running, please investigate. Check its status by running the following commands as root:${NC}"
     echo -e "systemctl status $COIN_NAME$IP_SELECT.service"
     echo -e "${RED}You can restart it by firing following command (as root):${NC}"
-    echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service"
-    echo -e "Check errors by runnig following commands:"
-    echo -e "less /var/log/syslog${NC}"
-    echo -e "journalctl -xe"
+    echo -e "${GREEN}systemctl start $COIN_NAME$IP_SELECT.service${NC}"
+    echo -e "${RED}Check errors by runnig following commands:${NC}"
+    echo -e "${GREEN}less /var/log/syslog${NC}"
+    echo -e "${GREEN}journalctl -xe${NC}"
  fi
  
  }
