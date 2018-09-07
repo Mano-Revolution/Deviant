@@ -153,7 +153,6 @@ function create_config() {
 #rpcuser=$RPCUSER
 #rpcpassword=$RPCPASSWORD
 rpcport=$RPC_PORT
-rpcallowip=127.0.0.1
 server=1
 daemon=1
 port=$COIN_PORT
@@ -185,10 +184,17 @@ clear
 
 function update_config() {
   sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
+  if [[ "$NODEIP" =~ [A-Za-z] ]]; then
+    NODEIP=[$NODEIP]
+    RPCBIND=[::1]
+   else RPCBIND=127.0.0.1
+  fi
   cat << EOF >> $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
 logintimestamps=1
 maxconnections=256
 bind=$NODEIP
+rpcbind=$RPCBIND
+rpcallow=$RPCBIND
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
@@ -212,7 +218,7 @@ function get_ip() {
   declare -a NODE_IPS
   for ips in $(ip a | grep inet | awk '{print $2}' | cut -f1 -d "/")
   do
-    NODE_IPS+=($(curl --interface $ips --connect-timeout 4 -s4 icanhazip.com))
+    NODE_IPS+=($(curl --interface $ips --connect-timeout 4 -sk ident.me))
   done
 
   if [ ${#NODE_IPS[@]} -gt 1 ]
@@ -280,10 +286,11 @@ function important_information() {
     echo -e "${GREEN}less /var/log/syslog${NC}"
     echo -e "${GREEN}journalctl -xe${NC}"
  fi
- 
+ unset NODE_IPS 
  }
 
 function setup_node() {
+  unset NODE_IPS
   check_user
   check_swap
   download_node
