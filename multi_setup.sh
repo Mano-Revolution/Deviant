@@ -166,7 +166,7 @@ function create_key() {
   echo -e "${YELLOW}Press enter to let the script generate one${NC}"
   read -e COINKEY
   if [[ -z "$COINKEY" ]]; then
-  $COIN_PATH$COIN_DAEMON$IP_SELECT.sh -daemon
+  $COIN_PATH$COIN_DAEMON$IP_SELECT.sh -daemon >/dev/null 2>&1
   sleep 30
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
@@ -179,7 +179,7 @@ function create_key() {
     sleep 30
     COINKEY=$($COIN_PATH$COIN_CLI$IP_SELECT.sh masternode genkey)
   fi
-  $COIN_PATH$COIN_CLI$IP_SELECT.sh stop
+  $COIN_PATH$COIN_CLI$IP_SELECT.sh stop >/dev/null 2>&1
 fi
 clear
 }
