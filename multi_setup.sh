@@ -51,6 +51,7 @@ case $ANSWER in
           exit 0
           ;;
      *)
+          clear
           it_exists
           ;; 
 esac
