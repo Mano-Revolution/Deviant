@@ -67,7 +67,7 @@ function download_node() {
    exit 1
   fi
   if [[ -f $COIN_PATH$COIN_DAEMON ]]; then
-  unzip -j $COIN_ZIP *$COIN_DAEMON
+  unzip -j $COIN_ZIP *$COIN_DAEMON >/dev/null 2>&1
   MD5SUMOLD=$(md5sum $COIN_PATH$COIN_DAEMON | awk '{print $1}')
   MD5SUMNEW=$(md5sum $COIN_DAEMON | awk '{print $1}')
   pidof $COIN_DAEMON
@@ -121,7 +121,7 @@ systemctl daemon-reload
 systemctl enable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
 systemctl start $COIN_NAME$IP_SELECT.service
 sleep 8
-netstat -napt | grep LISTEN | grep $NODEIP | grep $COIN_DAEMON
+netstat -napt | grep LISTEN | grep $NODEIP | grep $COIN_DAEMON >/dev/null 2>&1
  if [[ $? -ne 0 ]]; then
    ERRSTATUS=TRUE
  fi
