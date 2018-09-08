@@ -223,8 +223,11 @@ function get_ip() {
 
   if [ ${#NODE_IPS[@]} -gt 1 ]
     then
-      echo -e "${GREEN}More than one IP. Please press ENTER to use the first IP, type 1 for the second and so on...${NC}"
-      echo -e "${GREEN}If a $COIN_NAME is already running on this host, we recommend to press ENTER${NC}"
+      echo -e "${GREEN}More than one IP have been found.
+      echo -e "Please press ENTER to use ${NODE_IPS[0]}" 
+      echo -e "Type 1 for the second one ${NODE_IPS[1]} and so on...${NC}"
+      echo -e "If a $COIN_NAME masternode/node is already running on this host, we recommend to press ENTER"
+      echo -e "At the end of installation process, the script will ask you if you want to install another masternode${NC}"
       INDEX=
       for ip in "${NODE_IPS[@]}"
       do
@@ -243,6 +246,16 @@ function get_ip() {
     NODEIP=${NODE_IPS[0]}
     IP_SELECT=
   fi
+}
+
+another_run() {
+echo -e "If you want to install another masternode, please type ${RED}y${NC}"
+echo -e "Any other key will close such script"
+read -e another
+if [[ "$another" != "y" ]]
+  then echo -e "Good bye!"
+  else setup_node
+fi
 }
 
 function important_information() {
@@ -302,6 +315,7 @@ function setup_node() {
   update_config
   configure_systemd
   important_information
+  another_run
 }
 
 
