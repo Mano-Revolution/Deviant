@@ -33,11 +33,12 @@ fi
 
 function it_exists() {
 if [[ -d $CONFIGFOLDER$IP_SELECT ]]; then
-  echo -e "It seems a $COIN_NAME instance is already installed in $CONFIGFOLDER$IP_SELECT"
-  echo -e "Save masternodeprivkey if you want to use it again"
+  echo
+  echo -e "${GREEN}It seems a $COIN_NAME instance is already installed in $CONFIGFOLDER$IP_SELECT"
+  echo -e "Save masternodeprivkey if you want to use it again${NC}${RED}"
   echo -e $(cat $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE|grep masternodeprivkey |cut -d "=" -f2)
-  echo -e "Type y to scratch it (be carefull, if you are staking on this VPS, also your wallet will be erased)"
-  echo -e "Type n to exit"
+  echo -e "${NC}${GREEN}Type${NC} ${YELLOW}y${NC} ${GREEN}to scratch it (be carefull, if you are staking on this VPS, also your wallet will be erased)"
+  echo -e "Type${NC} ${YELLOW}n${NC} ${GREEN}to exit${NC}"
 read -e ANSWER
 case $ANSWER in
      y)      
@@ -53,6 +54,7 @@ case $ANSWER in
           it_exists
           ;; 
 esac
+clear
 fi
 }
 
@@ -246,6 +248,7 @@ function get_ip() {
     NODEIP=${NODE_IPS[0]}
     IP_SELECT=
   fi
+  clear
 }
 
 another_run() {
