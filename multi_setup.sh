@@ -224,8 +224,8 @@ function get_ip() {
   if [ ${#NODE_IPS[@]} -gt 1 ]
     then
       echo -e "${GREEN}More than one IP have been found."
-      echo -e "Please press ENTER to use ${NODE_IPS[0]}" 
-      echo -e "Type 1 for the second one ${NODE_IPS[1]} and so on...${NC}"
+      echo -e "Please press ${YELLOW}ENTER${NC} to use ${YELLOW}${NODE_IPS[0]}${NC}" 
+      echo -e "Type ${YELLOW}1${NC} for the second one ${YELLOW}${NODE_IPS[1]}${NC} and so on..."
       echo -e "If a $COIN_NAME masternode/node is already running on this host, we recommend to press ENTER"
       echo -e "At the end of installation process, the script will ask you if you want to install another masternode${NC}"
       INDEX=
