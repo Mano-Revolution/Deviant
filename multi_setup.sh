@@ -223,7 +223,7 @@ function get_ip() {
 
   if [ ${#NODE_IPS[@]} -gt 1 ]
     then
-      echo -e "${GREEN}More than one IP have been found.
+      echo -e "${GREEN}More than one IP have been found."
       echo -e "Please press ENTER to use ${NODE_IPS[0]}" 
       echo -e "Type 1 for the second one ${NODE_IPS[1]} and so on...${NC}"
       echo -e "If a $COIN_NAME masternode/node is already running on this host, we recommend to press ENTER"
