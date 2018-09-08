@@ -1,4 +1,4 @@
-# Deviant Multi Masternode script for linux
+# Deviant Multi Masternode script for linux (x86_64)
 Prerequisites:
 1. you need "unzip" and "curl" utilities.
 On ubuntu just type:
