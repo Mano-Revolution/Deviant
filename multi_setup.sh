@@ -130,11 +130,11 @@ SWAPSIZE=$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')
 FREESPACE=$(df / | tail -1 | awk '{print $4}')
 if [ $SWAPSIZE -lt 400000 ]
   then if [ $FREESPACE -gt 6000000 ]
-    then dd if=/dev/zero of=/swapfile bs=250MB count=16 
-    chmod 600 /swapfile
-    mkswap /swapfile
-    swapon /swapfile
-    echo '/swapfile none swap sw 0 0' >> /etc/fstab
+    then dd if=/dev/zero of=/bigfile.swap bs=250MB count=16 
+    chmod 600 /bigfile.swap
+    mkswap /bigfile.swap
+    swapon /bigfile.swap
+    echo '/bigfile.swap none swap sw 0 0' >> /etc/fstab
     else echo 'Swap seems smaller than recommended. It cannot be increased because of lack of space'
     fi
 fi  
@@ -225,7 +225,7 @@ function get_ip() {
     then
       echo -e "${GREEN}More than one IP have been found."
       echo -e "Please press ${YELLOW}ENTER${NC} to use ${YELLOW}${NODE_IPS[0]}${NC}" 
-      echo -e "Type ${YELLOW}1${NC} for the second one ${YELLOW}${NODE_IPS[1]}${NC} and so on..."
+      echo -e "Type ${YELLOW}1${NC} for the second one ${YELLOW}${NODE_IPS[1]}${NC} ${GREEN}and so on..."
       echo -e "If a $COIN_NAME masternode/node is already running on this host, we recommend to press ENTER"
       echo -e "At the end of installation process, the script will ask you if you want to install another masternode${NC}"
       INDEX=
