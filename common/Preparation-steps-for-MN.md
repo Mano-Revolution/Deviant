@@ -40,7 +40,7 @@ The results will looks like the image below (MN label as example)
 <p><img src="/images/mn-label.png" /></p>
 <br />
 From now on the masternode address will be referenced by <br />
-`{MN ADDR}`
+`{MN ADDR}`<br />
 
 ## Masternode private key
 Tha Masternode private key is a unique key that identify a Masternode.
@@ -53,7 +53,7 @@ Such key can be generated from RPC console (aka Debug Console) embedded in the w
 <p><img src="/images/mn-genkey-out.png" /></p>
 <br />
 From now on the private key will be referenced by <br />
-`{MN PRIV KEY}`
+`{MN PRIV KEY}`<br />
 
 ## Masternode collateral
 The Masternode collater is an amount of 5000 DEV that must be locked in order to run a Masternode.
@@ -70,4 +70,4 @@ Once the transaction reach 6 confirmations, the "transaction hash" and the relat
 From now on the "transaction hash" key will be referenced by <br />
 `{MN TX-iD}`<br />
 the "output index" will be referenced by <br />
-`{TX-ID IDX}`
+`{TX-ID IDX}`<br />
