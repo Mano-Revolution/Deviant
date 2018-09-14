@@ -5,7 +5,7 @@ Such guide cover the following points:<br />
 3. Masternode private key
 4. Masternode collateral<br />
 
-## Enable of Coin Control<br />
+## Enable Coin Control<br />
 The Coin Control feature allow the user to select the input that must be used to withdraw DEV during sending transactions. Without Coin Control you can't select the sending input, so you may corrupt the setup of input stakes, or destroy an unlocked Masternode collateral, for example.
 Send menù, without Coin Control looks like the below picture
 <br />
