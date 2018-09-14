@@ -13,9 +13,14 @@ Send menù, without Coin Control looks like the below picture
 The option to enable Coin Control feature is in the Gui Wallet:<br />
 Settings -> Options -> Wallet<br />
 <br />
-Settings -> Options | Wallet tab
-------------------- | ----------
-![GUI-options](/images/GUI-options.png)|![flagCoinControl](/images/flagCoinControl.png)
+Settings Options | Wallet tab
+---------------- | ----------
+![GUI-options](/images/GUI-options.png) | ![flagCoinControl](/images/flagCoinControl.png)
+
 
 <br />
 
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
