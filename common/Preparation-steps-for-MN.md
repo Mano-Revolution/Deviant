@@ -27,4 +27,15 @@ Just click on Coin Control, will open a new menù
 <br />
 <p><img src="/images/intoCoinControl.png" /></p>
 <br />
-In such menù you'ree free to select the sending inputs, leaving untouched collaterals and staking ones.
+In such menù you're free to select the sending inputs, leaving untouched collaterals and staking ones.
+
+## Creation of Masternode address
+Open the receiving address menù from your wallet<br />
+<p><img src="/images/rec-address.png" /></p>
+<br />
+Click "New" push button, then fill the label field. Confirm with "Ok" push button.
+The results will looks like the image below (MN label as example)
+<br />
+<p><img src="/images/mn-label.png" /></p>
+<br />
+
