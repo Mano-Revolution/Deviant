@@ -42,7 +42,7 @@ The results will looks like the image below (MN label as example)
 <p><img src="/images/mn-label.png" /></p>
 <br />
 From now on the masternode address will be referenced by <br />
-`{MN ADDR}`<br />
+`{MN ALIAS}`<br />
 
 ## Masternode private key
 Tha Masternode private key is a unique key that identify a Masternode.
