@@ -20,5 +20,11 @@ Settings Options | Wallet tab
 <br />
 In the wallet tab, just flag "Enable Coin Control" to enable such feature.
 Once enabled, the Send menù will looks like:<br />
-
-You can check the box [ ] ont left side of an input the use it in sending transactions
+<br />
+<p><img src="/images/boxCoinControl.png" alt="CoinControl" /></p>
+<br />
+Just click on Coin Control, will open a new menù
+<br />
+<p><img src="/images/intoCoinControl.png" /></p>
+<br />
+In such menù you'ree free to select the sending inputs, leaving untouched collaterals and staking ones.
