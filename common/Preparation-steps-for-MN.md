@@ -1,10 +1,11 @@
 # Preparation steps to run a Deviant Masternode<br />
 Such guide cover the following points:<br />
-1. Configuration of Coin Control
-2. Creation of Masternode address
-3. Creation of Masternode collateral<br />
+1. Enable Coin Control
+2. Masternode address
+3. Masternode private key
+4. Masternode collateral<br />
 
-## Configuration of Coin Control<br />
+## Enable Coin Control<br />
 The Coin Control feature allow the user to select the input that must be used to withdraw DEV during sending transactions. Without Coin Control you can't select the sending input, so you may corrupt the setup of input stakes, or destroy an unlocked Masternode collateral, for example.
 Send menù, without Coin Control looks like the below picture
 <br />
@@ -29,7 +30,7 @@ Just click on Coin Control, will open a new menù
 <br />
 In such menù you're free to select the sending inputs, leaving untouched collaterals and staking ones.
 
-## Creation of Masternode address
+## Masternode address
 Open the receiving address menù from your wallet<br />
 <p><img src="/images/rec-address.png" /></p>
 <br />
@@ -38,4 +39,10 @@ The results will looks like the image below (MN label as example)
 <br />
 <p><img src="/images/mn-label.png" /></p>
 <br />
+
+## Masternode private key
+
+
+## Masternode collateral
+
 
