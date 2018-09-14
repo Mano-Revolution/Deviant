@@ -1,5 +1,5 @@
-# Deviant Multi Masternode script for linux (x86_64)
-**script multi_setup.sh**<br />
+# Deviant Multi Masternode script for linux (x86_64)<br />
+## script multi_setup.sh<br />
 Such will script setup a Deviant masternode on your linux vps
 
 Prerequisites:
