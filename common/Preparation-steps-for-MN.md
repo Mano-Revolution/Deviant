@@ -8,10 +8,17 @@ Such guide cover the following points:<br />
 The Coin Control feature allow the user to select the input that must be used to withdraw DEV during sending transactions. Without Coin Control you can't select the sending input, so you may corrupt the setup of input stakes, or destroy an unlocked Masternode collateral, for example.
 Send menù, without Coin Control looks like the below picture
 <br />
-![No Coin Control](https://raw.githubusercontent.com/ScaMar/Deviant-Masternode/master/images/noCoinControl.png)
+![No Coin Control](/images/noCoinControl.png)
 <br />
 The option to enable Coin Control feature is in the Gui Wallet:<br />
 Settings -> Options -> Wallet<br />
+
+Settings Options | Wallet tab
+---------------- | ----------
+![GUI-options](/images/GUI-options.png) | ![flagCoinControl](/images/flagCoinControl.png)
+
 <br />
-![GUI-options](https://raw.githubusercontent.com/ScaMar/Deviant-Masternode/master/images/GUI-options.png)
-<br />
+In the wallet tab, just flag "Enable Coin Control" to enable such feature.
+Once enabled, the Send menù will looks like:<br />
+![boxCoinControl](/images/boxCoinControl.png)
+You can check the box [ ] ont left side of an input the use it in sending transactions
