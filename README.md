@@ -1,2 +1,2 @@
 # Deviant-Masternode
-Master node setup guides and script
+Master node setup guides and scripts
