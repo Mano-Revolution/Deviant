@@ -13,8 +13,9 @@ Send menù, without Coin Control looks like the below picture
 The option to enable Coin Control feature is in the Gui Wallet:<br />
 Settings -> Options -> Wallet<br />
 <br />
-Settings -> Options                    | Wallet tab
-:-------------------------------------:|:----------------------------------------------:
+Settings -> Options | Wallet tab
+------------------- | ----------
 ![GUI-options](/images/GUI-options.png)|![flagCoinControl](/images/flagCoinControl.png)
+
 <br />
 
