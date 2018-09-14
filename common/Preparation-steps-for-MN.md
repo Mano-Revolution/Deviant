@@ -3,7 +3,8 @@ Such guide cover the following points:<br />
 1. Enable Coin Control
 2. Masternode address
 3. Masternode private key
-4. Masternode collateral<br />
+4. Masternode collateral
+<br />
 The steps here described can be applied on QT GUI wallet for Windows, MacOS and Linux. 
 
 ## Enable Coin Control<br />
