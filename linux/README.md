@@ -1,4 +1,7 @@
 # Deviant Multi Masternode script for linux (x86_64)
+**script multi_setup.sh**<br />
+Such will script setup a Deviant masternode on your linux vps
+
 Prerequisites:
 1. you need "unzip" and "curl" utilities.
 On ubuntu just type:
