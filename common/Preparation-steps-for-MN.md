@@ -18,3 +18,7 @@ Settings Options | Wallet tab
 ![GUI-options](/images/GUI-options.png) | ![flagCoinControl](/images/flagCoinControl.png)
 
 <br />
+In the wallet tab, just flag "Enable Coin Control" to enable such feature.
+Once enabled, the Send menù will looks like:<br />
+![boxCoinControl](/images/boxCoinControl.png)
+You can check the box [ ] ont left side of an input the use it in sending transactions
