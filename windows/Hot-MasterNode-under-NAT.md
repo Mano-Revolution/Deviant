@@ -60,7 +60,29 @@ The ones not found there, are explained in here.<br />
 Restart your wallet to apply new conf files.
 
 ## Start alias
+Go to Masternode menu, select the line related to your Masternode, then righ-click -> start-alias<br />
 
+![mn-start-alias](/images/mn-start-alias.png)
+
+You must unlock the wallet (also for staking only) to start-alias.<br />
+
+![mn-start-unlock](/images/mn-start-unlock.png)
+
+If start ends successfully, check the status of your Masternode status with Debug Console:<br />
+
+![rpc console](/images/rpc-console.png)
+
+![mn-masternode-status](/images/mn-rpc-status.png)
+
+Once you read also these lines:<br />
+```
+"status": 4,
+"message": "Masternode successfully started"
+```
+with rpc command:<br />
+```masternode status```<br />
+Then your setup finished succesfully!<br />
+Well done!!!<br />
 
 
 

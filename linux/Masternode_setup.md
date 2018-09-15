@@ -40,7 +40,9 @@ Pressing ENTER without any other input will install the daemon on the main ip ad
 
 ![select ip](/images/mn-select-ip.png)
 
-In this case, ENTER is just pressed
+In this case, ENTER is just pressed<br />
+
+Note: If there is only one available public IP on your VPS, this screen selection will be skipped during setup. The available ip will be used by default.
 
 ## Insert Masternode privatekey
 In this step, the script asks you to enter the Masternode private key. This key has been generated during the [preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md). It is known as {MN PRIV KEY}. If you didn't save the key, or you just like to use another key, the script will generate one key for you.
@@ -59,8 +61,6 @@ By the way, before proceed with this guide, you must wait for chain full sync, o
 will give you info about the block number reached.<br />
 ```deviant-cli mnsync status```<br />
 will give you an overview about the sync process.<br />
-Note: according your setup, you may need to use another alias. `deviant-cli` can be used for default ip. If you installed the Masternode on ip with n=1, your command become: ```deviant-cli1.sh mnsync status```
-You find the alias you need, in the info at the end of setup (see image above).
 
 ![mnsync status](/images/mn-mnsync-status.png)
 
@@ -77,17 +77,32 @@ using the proper values instead the generic {PARAMETER}.
 In [preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md) it is explained how to get most of them.<br />
 The ones not found there, are explained in here.<br />
 
-![fill masternode.conf](/images/fill-masternode-conf.png)
+![fill masternode.conf](/images/mn-fill-masternode-conf.png)
 
 Restart your wallet to apply new conf files.
 
 ## Start alias
-Go to Masternode menu, select the line related to your Masternode, then righ-click -> start-alias
-You must unlock the wallet (also for staking only) to start-alias.
-If start ends successfully, check the status of your Masternode on VPS
+Go to Masternode menu, select the line related to your Masternode, then righ-click -> start-alias<br />
 
-![mn-start-alias](/images/mn-start-alias.png.png)
+![mn-start-alias](/images/mn-start-alias.png)
+
+You must unlock the wallet (also for staking only) to start-alias.<br />
 
 ![mn-start-unlock](/images/mn-start-unlock.png)
 
+If start ends successfully, check the status of your Masternode on VPS<br />
+
 ![mn-masternode-status](/images/mn-masternode-status.png)
+
+Once you read also these lines:<br />
+```
+"status": 4,
+"message": "Masternode successfully started"
+```
+with cli command:<br />
+```deviant-cli masternode status```<br />
+Then your setup ends succesfully!<br />
+Well done!!!<br />
+
+Note: according your setup, you may need to use another alias. `deviant-cli` can be used for default ip. If you installed the Masternode on ip with n=1, your cli command become: ```deviant-cli1.sh```
+You will find find the alias you need, in the on screen report at the end of setup steps.
