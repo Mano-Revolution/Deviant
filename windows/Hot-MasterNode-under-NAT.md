@@ -21,7 +21,6 @@ Settings Options | Network tab
 ---------------- | -----------
 ![GUI-options](/images/GUI-options.png) | ![network](/images/network.png)
 
-<br />
 ## Check lan address
 Search own lan address in the preferred way (network options or ipconfig cmd utility).
 Lan address must be static in network options of your lan interface, or, dhcp server (usually it runs on the router) must be configure to assign always same ip to the mac address of workstation/home server lan interface.
