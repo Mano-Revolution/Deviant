@@ -1,19 +1,18 @@
 # Preparation steps to run a Deviant Masternode<br />
 This guide covers the following points:<br />
-1. Enable Coin Control
-2. Masternode address
-3. Masternode private key
+1. Enabling Coin Control
+2. Creating a Masternode Address
+3. Generating a Masternode Private Key
 4. Masternode collateral
 <br />
-The steps here described can be applied on QT GUI wallet for Windows, MacOS and Linux. 
+The steps here described can be applied on QT GUI wallet for Windows, MacOS, and Linux.
 
-## Enable Coin Control<br />
-The Coin Control feature allow the user to select the input that must be used to withdraw DEV during sending transactions. Without Coin Control you can't select the sending input, so you may corrupt the setup of input stakes, or destroy an unlocked Masternode collateral, for example.
-Send menù, without Coin Control looks like the below picture
+## Enabling Coin Control<br />
+The Coin Control feature allows the user to select the input that must be used to withdraw DEV when sending transactions. Without Coin Control enabled, you can't select the sending input, so you may corrupt the setup of input stakes, or destroy an unlocked Masternode collateral, for example. The Send menu, without Coin Control, looks like the below picture:
 <br />
 ![No Coin Control](/images/noCoinControl.png)
 <br />
-The option to enable Coin Control feature is in the Gui Wallet:<br />
+The option to enable the Coin Control feature is in the Gui Wallet:<br />
 Settings -> Options -> Wallet<br />
 
 Settings Options | Wallet tab
@@ -22,17 +21,17 @@ Settings Options | Wallet tab
 
 <br />
 In the wallet tab, just flag "Enable Coin Control" to enable such feature.
-Once enabled, the Send menù will looks like:<br />
+Once enabled, the Send menu will look like this:<br />
 <br />
 <p><img src="/images/boxCoinControl.png" alt="CoinControl" /></p>
 <br />
-Just click on Coin Control, will open a new menù
+Just click on Coin Control, which will open a new menu.
 <br />
 <p><img src="/images/intoCoinControl.png" /></p>
 <br />
-In such menù you're free to select the sending inputs, leaving untouched collaterals and staking ones.
+In such menu you're free to select the sending inputs, leaving untouched collaterals and staking ones.
 
-## Masternode address
+## Creating a Masternode Address
 Open the receiving address menù from your wallet<br />
 <p><img src="/images/rec-address.png" /></p>
 <br />
@@ -44,7 +43,7 @@ The results will looks like the image below (MN label as example)
 From now on the masternode address will be referenced by <br />
 `{MN ALIAS}`<br />
 
-## Masternode private key
+## Generating a Masternode Private Key
 Tha Masternode private key is a unique key that identify a Masternode.
 Such key can be generated from RPC console (aka Debug Console) embedded in the wallet, with command <br />
 `masternode genkey`<br />
