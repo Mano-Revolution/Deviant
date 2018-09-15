@@ -45,10 +45,11 @@ shrinkdebuglog=1
 logtimestamps=1
 ```
 ## Fill file masternode.conf
-Open file deviant.conf<br />
+Open file masternode.conf<br />
 ![open masternode.conf](/images/edit-masternode-conf.png)
+
 Add such line:<br />
-```{MN ALIAS} {YOUR PUBLIC IP}:22618 {MN PRIV KEY} {MN TX-iD} {TX-ID IDX}```
+```{MN ALIAS} {YOUR PUBLIC IP}:22618 {MN PRIV KEY} {MN TX-iD} {TX-ID IDX}```<br />
 Restart your wallet to apply new conf files
 
 ## Start alias
