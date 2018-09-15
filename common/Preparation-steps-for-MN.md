@@ -29,14 +29,13 @@ Just click on Coin Control, which will open a new menu.
 <br />
 <p><img src="/images/intoCoinControl.png" /></p>
 <br />
-In such menu you're free to select the sending inputs, leaving untouched collaterals and staking ones.
+In such menu, you're free to select the sending inputs, leaving untouched collateral and staking ones.
 
 ## Creating a Masternode Address
-Open the receiving address menù from your wallet<br />
+Open the receiving address menu from your wallet.<br />
 <p><img src="/images/rec-address.png" /></p>
 <br />
-Click "New" push button, then fill the label field. Confirm with "Ok" push button.
-The results will looks like the image below (MN label as example)
+Click the "New" push button, fill in the label field with a name, and Confirm with "OK" push button. The results will looks like the image below (MN label as example):
 <br />
 <p><img src="/images/mn-label.png" /></p>
 <br />
@@ -44,8 +43,7 @@ From now on the masternode address will be referenced by <br />
 `{MN ALIAS}`<br />
 
 ## Generating a Masternode Private Key
-Tha Masternode private key is a unique key that identify a Masternode.
-Such key can be generated from RPC console (aka Debug Console) embedded in the wallet, with command <br />
+The Masternode private key is a unique key that identifies a Masternode. Such key can be generated from a RPC console (aka Debug Console) embedded in the wallet, with command: <br />
 `masternode genkey`<br />
 <p><img src="/images/rpc-console.png" /></p>
 <br />
@@ -57,14 +55,13 @@ From now on the private key will be referenced by <br />
 `{MN PRIV KEY}`<br />
 
 ## Masternode collateral
-The Masternode collater is an amount of 5000 DEV that must be locked in order to run a Masternode.
-The 5000 DEV become collateral after an user send such amount in one atomic transaction to {MN ADDR}.
+The Masternode collateral is an amount of 5000 DEV that must be locked in order to run a Masternode. The 5000 DEV become collateral after a user sends such amount in one atomic transaction to {MN ADDR}.
 Any additional fees must be added to the amount.<br />
 <p><img src="/images/send-5000.png" /></p>
 <br />
 <p><img src="/images/confirm-5000.png" /></p>
 <br />
-Once the transaction reach 6 confirmations, the "transaction hash" and the related "output index" can be shown via RPC console firing the command:<br />
+Once the transaction reaches 6 confirmations, the "transaction hash" and the related "output index" can be shown via RPC console firing the command:<br />
 `masternode outputs`<br />
 <p><img src="/images/mn-output.png" /></p>
 <br /> 
