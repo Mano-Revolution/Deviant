@@ -14,10 +14,21 @@ Establish the connection (the "Open" push button on putty), then login with your
 
 Connection parameters | Host certificate warnig | Login process
 --------------------- | ----------------------- | ------------- 
-![putty](/images/putty-connection.png) | ![login](/images/putty-warning.png) | ![login](/images/putty-login.png)
+![putty](/images/putty-connection.png) | ![login](/images/putty-security.png) | ![login](/images/putty-login.png)
+
+## Check the utilities
+To check unzip and curl we use:<br />
+```
+which unzip 
+which curl
+```
+The expected result is a filled line with full path.
+If the output is without path, then you need to install the missing utility/utilities.
+
+![check utilities](/images/utilities.png)
 
 ## Launch the script
-To launch the script exec this commands:
+To launch the script exec this commands:<br />
 `wget https://raw.githubusercontent.com/ScaMar/Deviant-Masternode/master/linux/masternode_setup.sh
 bash masternode_setup.sh`
 
