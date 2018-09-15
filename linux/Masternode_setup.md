@@ -34,6 +34,54 @@ bash masternode_setup.sh`
 
 ![launch script](/images/launch-script.png)
 
+## Select the IP
+This function let you choice on which IP you are going to listen the Masternode.
+Pressing ENTER without any other input will install the daemon on the main ip address. Any other IP address will be related to a increasing number 1 to _n_ . To select an ip realted to a number, type the number than press ENTER
+
+![select ip](/images/mn-select-ip.png)
+
+In this case, ENTER is just pressed
+
+## Insert Masternode privatekey
+In this step, the script asks you to enter the Masternode private key. This key has been generated during the [preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md). It is known as {MN PRIV KEY}. If you didn't save the key, or you just like to use another key, the script will generate one key for you.
+
+![mn priv key](/images/mn-priv-key.png)
+
+In this case the key generate during preparation steps has been used
+
+## Setup done
+After the private key step, the setup is finished.
+
+![setup done](/images/mn-setup-done.png)
+
+By the way, before proceed with this guide, you must wait for chain full sync, otherwise you can't start your Masternode<br />
+```devian-cli getinfo```<br />
+will give you info about the block number reached.<br />
+```deviant-cli mnsync status```<br />
+will give you an overview about the sync process.<br />
+Note: according your setup, you may need to use another alias. `deviant-cli` can be used for default ip. If you installed the Masternode on ip with n=1, your command become: ```deviant-cli1.sh mnsync status```
+You find the alias you need, in the info at the end of setup (see image above).
+
+![mnsync status](/images/mn-mnsync-status.png)
+
+You're free to proceed when _"IsBlockchainSynced": true,_
+
+## Fill file masternode.conf
+## Fill file masternode.conf
+Open file masternode.conf<br />
+![open masternode.conf](/images/edit-masternode-conf.png)
+![sample masternode.conf](/images/sample-masternode-conf.png)
+
+Add these lines:<br />
+```{MN ALIAS} {YOUR PUBLIC IP}:22618 {MN PRIV KEY} {MN TX-iD} {TX-ID IDX}```<br />
+using the proper values instead the generic {PARAMETER}.
+In [preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md) it is explained how to get most of them.<br />
+The ones not found there, are explained in here.<br />
+Restart your wallet to apply new conf files.
+
+## Start alias
+
+
 
 
 
