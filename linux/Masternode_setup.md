@@ -67,7 +67,6 @@ You find the alias you need, in the info at the end of setup (see image above).
 You're free to proceed when _"IsBlockchainSynced": true,_
 
 ## Fill file masternode.conf
-## Fill file masternode.conf
 Open file masternode.conf<br />
 ![open masternode.conf](/images/edit-masternode-conf.png)
 ![sample masternode.conf](/images/sample-masternode-conf.png)
@@ -77,12 +76,18 @@ Add these lines:<br />
 using the proper values instead the generic {PARAMETER}.
 In [preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md) it is explained how to get most of them.<br />
 The ones not found there, are explained in here.<br />
+
+![fill masternode.conf](/images/fill-masternode-conf.png)
+
 Restart your wallet to apply new conf files.
 
 ## Start alias
+Go to Masternode menu, select the line related to your Masternode, then righ-click -> start-alias
+You must unlock the wallet (also for staking only) to start-alias.
+If start ends successfully, check the status of your Masternode on VPS
 
+![mn-start-alias](/images/mn-start-alias.png.png)
 
+![mn-start-unlock](/images/mn-start-unlock.png)
 
-
-
-
+![mn-masternode-status](/images/mn-masternode-status.png)
