@@ -86,7 +86,7 @@ Go to Masternode menu, select the line related to your Masternode, then righ-cli
 You must unlock the wallet (also for staking only) to start-alias.
 If start ends successfully, check the status of your Masternode on VPS
 
-![mn-start-alias](/images/mn-start-alias.png.png)
+![mn-start-alias](/images/mn-start-alias.png)
 
 ![mn-start-unlock](/images/mn-start-unlock.png)
 
