@@ -59,8 +59,6 @@ By the way, before proceed with this guide, you must wait for chain full sync, o
 will give you info about the block number reached.<br />
 ```deviant-cli mnsync status```<br />
 will give you an overview about the sync process.<br />
-Note: according your setup, you may need to use another alias. `deviant-cli` can be used for default ip. If you installed the Masternode on ip with n=1, your command become: ```deviant-cli1.sh mnsync status```
-You find the alias you need, in the info at the end of setup (see image above).
 
 ![mnsync status](/images/mn-mnsync-status.png)
 
@@ -83,11 +81,25 @@ Restart your wallet to apply new conf files.
 
 ## Start alias
 Go to Masternode menu, select the line related to your Masternode, then righ-click -> start-alias
-You must unlock the wallet (also for staking only) to start-alias.
-If start ends successfully, check the status of your Masternode on VPS
 
 ![mn-start-alias](/images/mn-start-alias.png)
 
+You must unlock the wallet (also for staking only) to start-alias.
+
 ![mn-start-unlock](/images/mn-start-unlock.png)
 
+If start ends successfully, check the status of your Masternode on VPS
+
 ![mn-masternode-status](/images/mn-masternode-status.png)
+
+Once you read also these lines:
+```  "status": 4,
+  "message": "Masternode successfully started"
+```
+with command:
+```deviant-cli masternode status```
+Then your setup ends succesfully!
+Well done!!!
+
+Note: according your setup, you may need to use another alias. `deviant-cli` can be used for default ip. If you installed the Masternode on ip with n=1, your cli command become: ```deviant-cli1.sh```
+You will find find the alias you need, in the on screen report at the end of setup steps.
