@@ -16,4 +16,14 @@ Connection parameters | Host certificate warnig | Login process
 --------------------- | ----------------------- | ------------- 
 ![putty](/images/putty-connection.png) | ![login](/images/putty-warning.png) | ![login](/images/putty-login.png)
 
+## Launch the script
+To launch the script exec this commands:
+`wget https://raw.githubusercontent.com/ScaMar/Deviant-Masternode/master/linux/masternode_setup.sh
+bash masternode_setup.sh`
+
+![launch script](/images/launch-script.png)
+
+
+
+
 
