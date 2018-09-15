@@ -47,10 +47,14 @@ logtimestamps=1
 ## Fill file masternode.conf
 Open file masternode.conf<br />
 ![open masternode.conf](/images/edit-masternode-conf.png)
+![sample masternode.conf](/images/sample-masternode-conf.png)
 
 Add such line:<br />
 ```{MN ALIAS} {YOUR PUBLIC IP}:22618 {MN PRIV KEY} {MN TX-iD} {TX-ID IDX}```<br />
-Restart your wallet to apply new conf files
+using the proper values instead the generic {PARAMETER}.
+[preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md) it is explained how to get most of them.<br />
+The ones not found there, are explained in here.<br />
+Restart your wallet to apply new conf files.
 
 ## Start alias
 
