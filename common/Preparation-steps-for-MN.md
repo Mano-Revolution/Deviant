@@ -1,5 +1,5 @@
 # Preparation steps to run a Deviant Masternode<br />
-Such guide cover the following points:<br />
+This guide covers the following points:<br />
 1. Enable Coin Control
 2. Masternode address
 3. Masternode private key
