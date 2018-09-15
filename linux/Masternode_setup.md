@@ -17,8 +17,11 @@ Connection parameters | Host certificate warnig | Login process
 ![putty](/images/putty-connection.png) | ![login](/images/putty-security.png) | ![login](/images/putty-login.png)
 
 ## Check the utilities
-To check unzip and curl we use:```which unzip
-which curl```
+To check unzip and curl we use:<br />
+```
+which unzip 
+which curl
+```
 The expected result is a filled line with full path.
 If the output is without path, then you need to install the missing utility/utilities.
 
