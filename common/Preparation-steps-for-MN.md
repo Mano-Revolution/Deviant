@@ -5,7 +5,7 @@ This guide covers the following points:<br />
 3. Generating a Masternode Private Key
 4. Masternode collateral
 <br />
-The steps here described can be applied on QT GUI wallet for Windows, MacOS, and Linux.
+The steps described here can be applied on QT GUI wallet for Windows, MacOS, and Linux.
 
 ## Enabling Coin Control<br />
 The Coin Control feature allows the user to select the input that must be used to withdraw DEV when sending transactions. Without Coin Control enabled, you can't select the sending input, so you may corrupt the setup of input stakes, or destroy an unlocked Masternode collateral, for example. The Send menu, without Coin Control, looks like the below picture:
