@@ -80,26 +80,27 @@ The ones not found there, are explained in here.<br />
 Restart your wallet to apply new conf files.
 
 ## Start alias
-Go to Masternode menu, select the line related to your Masternode, then righ-click -> start-alias
+Go to Masternode menu, select the line related to your Masternode, then righ-click -> start-alias<br />
 
 ![mn-start-alias](/images/mn-start-alias.png)
 
-You must unlock the wallet (also for staking only) to start-alias.
+You must unlock the wallet (also for staking only) to start-alias.<br />
 
 ![mn-start-unlock](/images/mn-start-unlock.png)
 
-If start ends successfully, check the status of your Masternode on VPS
+If start ends successfully, check the status of your Masternode on VPS<br />
 
 ![mn-masternode-status](/images/mn-masternode-status.png)
 
-Once you read also these lines:
-```  "status": 4,
-  "message": "Masternode successfully started"
+Once you read also these lines:<br />
 ```
-with command:
-```deviant-cli masternode status```
-Then your setup ends succesfully!
-Well done!!!
+"status": 4,
+"message": "Masternode successfully started"
+```
+with cli command:<br />
+```deviant-cli masternode status```<br />
+Then your setup ends succesfully!<br />
+Well done!!!<br />
 
 Note: according your setup, you may need to use another alias. `deviant-cli` can be used for default ip. If you installed the Masternode on ip with n=1, your cli command become: ```deviant-cli1.sh```
 You will find find the alias you need, in the on screen report at the end of setup steps.
