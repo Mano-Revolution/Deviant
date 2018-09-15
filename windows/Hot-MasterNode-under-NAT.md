@@ -7,7 +7,7 @@
 1. The [preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md) are fullfilled (this guide inherit same name convention)
 2. Knowledge about port forward rules on own router (or how to enable UPnP support)
 3. The workstation/home server must have static lan ip address
-4. Any security software must limit/lock deviant-qt.exe
+4. Any security software must not limit/lock deviant-qt.exe
 
 ## Check your public ip
 To check own public ip, a user can just open this link in a browser: [http://ident.me](http://ident.me)<br />
