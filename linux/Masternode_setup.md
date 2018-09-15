@@ -75,7 +75,7 @@ using the proper values instead the generic {PARAMETER}.
 In [preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md) it is explained how to get most of them.<br />
 The ones not found there, are explained in here.<br />
 
-![fill masternode.conf](/images/fill-masternode-conf.png)
+![fill masternode.conf](/images/mn-fill-masternode-conf.png)
 
 Restart your wallet to apply new conf files.
 
