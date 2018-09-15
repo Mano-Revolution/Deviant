@@ -31,7 +31,8 @@ From now on it will be referenced by {YOUR LAN IP}
 Open file deviant.conf<br />
 ![open deviant.conf](/images/edit-local-conf.png)
 Add such parameters:<br />
-```masternode=1
+```
+masternode=1
 masternodeaddr={YOUR PUBLIC IP}:22618
 masternodeprivkey={MN PRIV KEY}
 externalip={YOUR PUBLIC IP}
