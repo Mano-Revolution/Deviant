@@ -30,6 +30,7 @@ From now on it will be referenced by {YOUR LAN IP}
 ## Fill file deviant.conf
 Open file deviant.conf<br />
 ![open deviant.conf](/images/edit-local-conf.png)
+
 Add such parameters:<br />
 ```
 masternode=1
