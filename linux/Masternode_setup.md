@@ -40,7 +40,9 @@ Pressing ENTER without any other input will install the daemon on the main ip ad
 
 ![select ip](/images/mn-select-ip.png)
 
-In this case, ENTER is just pressed
+In this case, ENTER is just pressed<br />
+
+Note: If there is only one available public IP on your VPS, this screen selection will be skipped during setup. The available ip will be used by default.
 
 ## Insert Masternode privatekey
 In this step, the script asks you to enter the Masternode private key. This key has been generated during the [preparation steps](https://github.com/ScaMar/Deviant-Masternode/blob/master/common/Preparation-steps-for-MN.md). It is known as {MN PRIV KEY}. If you didn't save the key, or you just like to use another key, the script will generate one key for you.
