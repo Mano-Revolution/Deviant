@@ -218,6 +218,7 @@ EOF
 
 
 function get_ip() {
+  unset NODE_IPS
   declare -a NODE_IPS
   for ips in $(ip a | grep inet | awk '{print $2}' | cut -f1 -d "/")
   do
