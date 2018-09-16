@@ -68,7 +68,7 @@ You must unlock the wallet (also for staking only) to start-alias.<br />
 
 ![mn-start-unlock](/images/mn-start-unlock.png)
 
-If start ends successfully, check the status of your Masternode status with Debug Console:<br />
+If start ends successfully, check the status of your Masternode with Debug Console:<br />
 
 ![rpc console](/images/rpc-console.png)
 
