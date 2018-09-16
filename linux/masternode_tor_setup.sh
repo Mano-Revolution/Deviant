@@ -148,10 +148,13 @@ systemctl daemon-reload
 systemctl enable $COIN_NAME$IP_SELECT.service >/dev/null 2>&1
 systemctl start $COIN_NAME$IP_SELECT.service
 sleep 8
-netstat -napt | grep LISTEN | grep $NODEIP | grep $COIN_DAEMON >/dev/null 2>&1
- if [[ $? -ne 0 ]]; then
+if [[ "$NODEIP" == "$TORNODE" ]]
+   then netstat -napt | grep LISTEN | grep 127.0.0.1 | grep $COIN_DAEMON >/dev/null 2>&1
+   else netstat -napt | grep LISTEN | grep $NODEIP | grep $COIN_DAEMON >/dev/null 2>&1
+fi
+if [[ $? -ne 0 ]]; then
    ERRSTATUS=TRUE
- fi
+fi
 }
 
 function check_swap() {
