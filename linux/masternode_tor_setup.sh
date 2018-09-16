@@ -60,19 +60,22 @@ fi
 }
 
 function set_tornode() {
+clear
+echo "setting up tor node ......"
 echo "deb http://deb.torproject.org/torproject.org $(lsb_release -c | awk '{ print $2 }') main 
-deb-src http://deb.torproject.org/torproject.org $(lsb_release -c | awk '{ print $2 }') main" >> /etc/apt/sources.list.d/torproject.list >/dev/null 2>&1
+deb-src http://deb.torproject.org/torproject.org $(lsb_release -c | awk '{ print $2 }') main" >> /etc/apt/sources.list.d/torproject.list
 gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 >/dev/null 2>&1
 gpg  --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add - >/dev/null 2>&1
 apt update >/dev/null 2>&1
 apt -y install tor deb.torproject.org-keyring >/dev/null 2>&1
 echo "HiddenServiceDir /var/lib/tor/deviant-service/ 
-HiddenServicePort 6695 127.0.0.1:6695" 
-ClientOnly 1
-EnforceDistinctSubnets 0
-ExcludeSingleHopRelays 0
-AllowSingleHopCircuits 1 >> /etc/tor/torrc >/dev/null 2>&1
-systemctl restart tor >/dev/null 2>&1
+HiddenServicePort 22618 127.0.0.1:22618" >> /etc/tor/torrc
+echo "" >> /etc/tor/torrc
+sleep 3
+systemctl stop tor >/dev/null 2>&1
+sleep 3
+systemctl start tor >/dev/null 2>&1
+sleep 3
 }
 
 function download_node() {
@@ -96,11 +99,14 @@ function download_node() {
      for service in $(systemctl | grep Deviant | awk '{ print $1 }'); do systemctl stop $service >/dev/null 2>&1; done
      sleep 3
      killall $COIN_DAEMON
+     RESTARTSYSD=Y
    fi
   fi
   unzip -o -j $COIN_ZIP *$COIN_DAEMON *$COIN_CLI -d $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
-  for service in $(systemctl | grep Deviant | awk '{ print $1 }'); do systemctl start $service >/dev/null 2>&1; done
+  if [[ "RESTARTSYSD" == "Y" ]]
+  then for service in $(systemctl | grep Deviant | awk '{ print $1 }'); do systemctl start $service >/dev/null 2>&1; done
+  fi
   sleep 3
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
@@ -211,7 +217,7 @@ if [[ "$NODEIP" == "$TORNODE" ]]
 then sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
   cat << EOF >> $CONFIGFOLDER$IP_SELECT/$CONFIG_FILE
 gen=0
-socks=5
+socks5=1
 proxy=127.0.0.1:9050
 maxconnections=8
 logintimestamps=1
@@ -251,9 +257,8 @@ masternodeprivkey=$COINKEY
 #addnode=109.10.53.168:22618
 #addnode=178.239.54.249:22618
 EOF
-}
 fi
-
+}
 
 function get_ip() {
   unset NODE_IPS
@@ -276,10 +281,10 @@ function get_ip() {
         echo ${INDEX} $ip
         let INDEX=${INDEX}+1
       done
-      echo $(${INDEX}+1) tor
+      echo $(let INDEX=${INDEX}+1) tor
       read -e choose_ip
       echo ${NODE_IPS[@]} | grep ${NODE_IPS[$choose_ip]} >/dev/null 2>&1
-      if [[ $? -ne 0 ]] || [[ "$chooseip" != "tor" ]];
+      if [[ $? -ne 0 ]] || [[ "$chooseip" == "tor" ]];
         then echo "Choosen value not in list"
         get_ip
       fi
