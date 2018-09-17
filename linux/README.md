@@ -1,5 +1,5 @@
 # Deviant Masternode setup/administration scripts for linux (x86_64)<br />
-## script masternode_setup.sh<br />
+## Script: masternode_setup.sh<br />
 This script will setup a Deviant masternode on your linux VPS.
 
 Prerequisites:
@@ -14,7 +14,7 @@ To execute the script you can use such commands:
 
 Check [Masternode Setup](https://github.com/ScaMar/Deviant-Masternode/blob/master/linux/Masternode_setup.md) guide for explanations and sample execution.
 
-## Guide masternode_setup.md<br />
+## Guide: masternode_setup.md<br />
 This guide covers the point:<br />
 * execution of masternode_setup.sh<br />
 
