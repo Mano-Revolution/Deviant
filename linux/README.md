@@ -13,3 +13,9 @@ To execute the script you can use such commands:
 2. ```bash masternode_setup.sh```
 
 Check [Masternode Setup](https://github.com/ScaMar/Deviant-Masternode/blob/master/linux/Masternode_setup.md) guide for explanations and sample execution.
+
+## Guide masternode_setup.md<br />
+This guide covers the point:<br />
+* execution of masternode_setup.sh<br />
+
+This guide will drive you, step by step, during the setup of a Deviant Masternode on linux VPS
