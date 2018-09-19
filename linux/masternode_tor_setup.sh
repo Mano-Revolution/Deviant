@@ -276,6 +276,7 @@ function get_ip() {
       echo -e "${GREEN}More than one IP have been found."
       echo -e "Please press ${YELLOW}ENTER${NC} ${GREEN}to use ${NC}${YELLOW}${NODE_IPS[0]}${NC}" 
       echo -e "${GREEN}Type${NC} ${YELLOW}1${NC}${GREEN} for the second one${NC} ${YELLOW}${NODE_IPS[1]}${NC} ${GREEN}and so on..."
+      echo -e "${GREEN}Type${NC} ${YELLOW}tor${NC}${GREEN} to install on tor net${NC}
       echo -e "If a $COIN_NAME masternode/node is already running on this host, we recommend to press ENTER"
       echo -e "At the end of installation process, the script will ask you if you want to install another masternode${NC}"
       INDEX=
@@ -284,7 +285,7 @@ function get_ip() {
         echo ${INDEX} $ip
         let INDEX=${INDEX}+1
       done
-      echo $(let INDEX=${INDEX}+1) tor
+      echo tor
       read -e choose_ip
       echo ${NODE_IPS[@]} | grep ${NODE_IPS[$choose_ip]} >/dev/null 2>&1
       if [[ $? -ne 0 ]] || [[ "$chooseip" == "tor" ]];
