@@ -1,38 +1,38 @@
 # Setup wallet
-## Setup QT wallet on windows
+## Setup QT wallet on Windows
 ### Download wallet
-The wallet is available on [github](https://github.com/Deviantcoin/Source/releases)
-Search for latest release, download the wallet that match your windows arch.
+The wallet is available on [github](https://github.com/Deviantcoin/Source/releases).
+Search for latest release, then download the wallet that matches your Windows arch.
 
 ![latest](/images/latest.png)
 
-Win32 wallet can be executed also on win64, win64 wallet can be executed only on win64.
+Win32 wallet can be executed also on win64; win64 wallet can be executed only on win64.
 ### Extract Package content
-The windows zip packages contains the standalone executables and the installer.
+The windows zip packages contain the standalone executables and the installer.
 
 ![win package](/images/win-content.png)
 
-You can extract it with the default utility "Compressed folder", in this example the package will be extracted in C:\Deviantcoin
+You can extract it with the default utility "Compressed folder". In this example, the package will be extracted in C:\Deviantcoin
 
 ![extract1](/images/exctract1.png)
 
 ![extract2](/images/extract2.png)
 
-According to your windows release, you may need to unlock the executables, everyone of them:<br />
-Right click on the file --> set flag on "Unblock" in General tab (see the example below)
+According to your Windows release, you may need to unlock the executables - every one of them.<br />
+Right click on the file --> set flag on "Unblock" in General tab (see the example below).
 
 ![unblock](/images/unblock.png)
 
 ### Setting up the wallet
 There are two ways to install a QT Deviant wallet:<br />
-1. Just execute the file `deviant-qt.exe` from exctracting folder
-2. Run the setup, that will install the wallet package in the windows way (next -> next -> next)
+1. Just execute the file `deviant-qt.exe` from exctracting folder.
+2. Run the setup, that will install the wallet package in the windows way (next -> next -> next).
 
 ![setup1](/images/setup1.png)
 
 ![setup2](/images/setup2.png)
 
-The first time you execute the wallet you have to set the default directory.
+The first time you execute the wallet, you have to set the default directory.
 
 ![setup dir](/images/setup-dir.png)
 
@@ -41,11 +41,11 @@ Once the directory has been choosen, the wallet will load its data and start the
 
 ![first sync](/images/first-sync.png)
 
-If the sync do not start in minutes, you may need to add peers in the deviant.conf file.
+If the sync does not start in minutes, you may need to add peers to the deviant.conf file.
 
 ![deviant.conf](/images/open-dev-conf.png)
 
-Add the nodes below, save and close the file then restart the wallet
+Add the nodes below, save and close the file, then restart the wallet.
 ```
 addnode=209.97.139.2
 addnode=45.35.64.39
@@ -59,8 +59,8 @@ addnode=219.74.243.91
 addnode=109.10.53.168
 addnode=178.239.54.249
 ```
-### Encrypt the wallet
-When the sync is finished, it is recommended to encrypt the wallet, before transfer funds in it.<br />
+### Encrypting the wallet
+When the sync is finished, it is recommended to encrypt the wallet before transfering funds to it.<br />
 This action will enhance the security of your wallet, once the wallet is encrypted you need to unlock it before moving funds.
 
 Step | On screen
