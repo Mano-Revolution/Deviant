@@ -1,4 +1,4 @@
-# Deviant staking guide
+# Deviant Staking Guide
 ## QT wallet
 ### Prerequisites
 1. The wallet has been setup (verify [here](/common/Setup_wallet.md))
@@ -17,7 +17,7 @@ The Coin Control feature allows the user to select the input that must be used t
 <br />
 ![No Coin Control](/images/noCoinControl.png)
 <br />
-The option to enable the Coin Control feature is in the Gui Wallet:<br />
+The option to enable the Coin Control feature is in the Gui Wallet. You can activate it by hitting<br />
 Settings -> Options -> Wallet<br />
 
 Settings Options | Wallet tab
@@ -35,7 +35,7 @@ Just click on Coin Control, which will open a new menu.
 ![flagCoinControl](/images/intoCoinControl2.png)
 
 In this menu, just select the input(s) you want to stake, then press Ok.
-### Split your DEV in stake inputs
+### Split your DEV into stake inputs
 Copy the amount visible in "After Fee" field in "Amount" field.<br />
 Set the previously created address in "Pay To:" field. <br />
 Set flag in "Split UTXO" field, then write in the editable field the number (an integer) of inputs you want split your amount.
