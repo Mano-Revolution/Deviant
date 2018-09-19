@@ -47,7 +47,8 @@ Sharing experience about staking with other users may improve the staking experi
 ### Start staking
 Once the inputs setup is finished, in order to stake you have two prerequisites:
 1. Your inputs needs 60 confirmations<br />
-A way to count confirmations for input, is to open "Coin Control" in "list mode", then read confirmations in the homonimous column.
+
+A way to count confirmations, is to open "Coin Control" in "list mode", then read confirmations in the homonimous column.
 
 ![confirmations](/images/confirmations.png)
 
