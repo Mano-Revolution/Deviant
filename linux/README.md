@@ -19,3 +19,6 @@ This guide covers the point:<br />
 * execution of masternode_setup.sh<br />
 
 This guide will drive you, step by step, during the setup of a Deviant Masternode on linux VPS
+
+## Script: masternode_tor_setup.sh
+This script is an enhanced version of `masternode_setup.sh`. When you execute this script, you have the chance to type `tor` in the IP address selection screen. The advantage to setup the Masternode on tor net is that you can run 2 Masternodes with only one IP address. The cost is a bit more CPU and NET to run the Masternode. 
