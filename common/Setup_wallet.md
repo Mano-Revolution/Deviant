@@ -1,5 +1,5 @@
-# Setup QT wallet
-## Setup on windows
+# Setup wallet
+## Setup QT wallet on windows
 ### Download wallet
 The wallet is available on [github](https://github.com/Deviantcoin/Source/releases)
 Search for latest release, download the wallet that match your windows arch.
