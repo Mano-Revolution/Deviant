@@ -1,7 +1,7 @@
 # Deviant staking guide
 ## QT wallet
 ### Prerequisites
-1. The wallet has been setup (verify [here](/common/Setup_wallet.md)
+1. The wallet has been setup (verify [here](/common/Setup_wallet.md))
 ### Creating a Staking address
 Open the receiving address menu from your wallet.<br />
 
@@ -27,12 +27,12 @@ Settings Options | Wallet tab
 <br />
 In the wallet tab, just flag "Enable Coin Control" to enable such feature.
 Once enabled, the Send menu will look like this:<br />
-<br />
-<p><img src="/images/boxCoinControl.png" alt="CoinControl" /></p>
-<br />
+
+![box coin control](/images/boxCoinControl.png)
+
 Just click on Coin Control, which will open a new menu.
 
-![flagCoinControl](/images/intoCoinControl2.png]
+![flagCoinControl](/images/intoCoinControl2.png)
 
 In this menu, just select the input(s) you want to stake, then press Ok.
 ### Split your DEV in stake inputs
@@ -44,4 +44,19 @@ Set flag in "Split UTXO" field, then write in the editable field the number (an 
 
 Note: There is not a formula to calculate the optimal size of inputs. It depends on the values of the net, also optimal size is not a constant, it changes with time.<br />
 Sharing experience about staking with other users may improve the staking experience.
+### Start staking
+Once the inputs setup is finished, in order to stake you have two prerequisites:
+1. Your inputs needs 60 confirmations<br />
+A way to count confirmations for input, is to open "Coin Control" in "list mode", then read confirmations in the homonimous column.
+
+![confirmations](/images/confirmations.png)
+
+2. Your wallet needs to be unlocked (recommended option is "For anonymization, automint, and staking only")<br />
+
+Step | On screen
+---- | ---------
+Open the menu | ![menu unlock](/images/unlock-wallet-menu.png)
+Enter passhphrase | ![enter passphrase](/images/unlock-wallet-password.png)
+Verify | ![verify unlock](/images/unlock-wallet-verify.png)
+
 
