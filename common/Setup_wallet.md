@@ -70,4 +70,7 @@ Enter passhphrase | ![enter passphrase](/images/passphrase-encrypt-wallet.png)
 Confirm | ![confirm encryption](/images/confirm-encrypt-wallet.png)
 Read warning info! | ![warning](/images/warning-encrypt-wallet.png)
 
+## Setup Cli wallet on Linux
+
+
 
