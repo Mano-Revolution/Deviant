@@ -1,42 +1,10 @@
-Setup_guide
-=============
-This repository is for Deviant coin Masternode setup guide
+# Deviant-Masternode
+Master node setup guides and scripts
 
-* deviant_install.sh
-    * basic setup script for masternode
-* multi_setup.sh
-    * multiple masternode on 1 vps (VULTR) 
-    
-# Usage
-## masternode setup
-cd /home;wget https://github.com/Mano-Revolution/Deviant/raw/master/deviant_install.sh; chmod 755  ./deviant_install.sh;./deviant_install.sh
-## add masternode
-cd /home;wget https://github.com/Mano-Revolution/Deviant/raw/master/multi_setup.sh; chmod 755 ./multi_setup.sh;./multi_setup.sh
-
-## Linux qt wallet 
-```
-RUN apt-get update && apt-get install -y software-properties-common && \
-  apt-get install -y \
-  software-properties-common \
-  build-essential \
-  libtool \
-  autotools-dev \
-  automake \
-  pkg-config \
-  libssl-dev \
-  libevent-dev \
-  bsdmainutils \
-  python3 \
-  libboost-system-dev \
-  libboost-filesystem-dev \
-  libboost-chrono-dev \
-  libboost-program-options-dev \
-  libboost-test-dev \
-  libboost-thread-dev \
-  libboost-all-dev \
-  git
-
-RUN add-apt-repository ppa:bitcoin/bitcoin && \
-  apt-get update && \
-  apt-get install -y libdb4.8-dev libdb4.8++-dev
-```
+[QT wallet - Preparation steps to run a Deviant Masternode](/common/Preparation-steps-for-MN.md)<br />
+[Wallet - Setup wallet](/common/Setup_wallet.md)<br />
+[Wallet - Deviant Staking Guide](/common/Deviant_staking.md)<br />
+[Readme Linux](/linux/README.md)<br />
+[Deviant Masternode setup on Linux VPS](/linux/Masternode_setup.md)<br />
+[Reamd Windows](/windows/README.md)<br />
+[Windows - Hot MasterNode under NAT](/windows/Hot-MasterNode-under-NAT.md)<br />
