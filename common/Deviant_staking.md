@@ -2,13 +2,13 @@
 ## QT wallet
 ### Prerequisites
 1. The wallet has been setup (verify [here](/common/Setup_wallet.md))
-### Creating a Staking address
+### Creating a Staking Address
 Open the receiving address menu from your wallet.<br />
 
 ![receiving address](/images/rec-address.png)
 
-Click the "New" push button, fill in the label field with a name, and Confirm with "OK" push button.
-The results will looks like the image below (STAKE label as example):
+Click the "New" push button, fill in the label field with a name, and Confirm with the "OK" push button.
+The results will look like the image below (STAKE label as example):
 
 ![staking address](/images/receiving-stake.png)
 
@@ -42,7 +42,7 @@ Set flag in "Split UTXO" field, then write in the editable field the number (an 
 
 ![UTXO](/images/utxo.png)
 
-Note: There is not a formula to calculate the optimal size of inputs. It depends on the values of the net, also optimal size is not a constant, it changes with time.<br />
+Note: There is not a formula to calculate the optimal size of inputs. It depends on the values staking on the network. Also optimal size is not a constant and it changes with time.<br />
 Sharing experience about staking with other users may improve the staking experience.
 ### Start staking
 Once the inputs setup is finished, in order to stake you have two prerequisites:
